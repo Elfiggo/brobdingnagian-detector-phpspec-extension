@@ -1,0 +1,16 @@
+{
+    "name": "elfiggo/brobdingnagian-detector",
+    "description": "Detects if your class and methods are too big and suggest to extract responsibilities and collaborators",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Elfiggo",
+            "email": "fig@hotmail.co.uk"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+			"phpspec/phpspec":"^2.2"
+		}
+}
