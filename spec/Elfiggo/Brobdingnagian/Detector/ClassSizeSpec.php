@@ -16,6 +16,7 @@ class ClassSizeSpec extends ObjectBehavior
     {
         $this->beConstructedWith($sus);
     }
+
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\ClassSize');
