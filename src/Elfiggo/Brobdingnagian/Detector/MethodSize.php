@@ -17,6 +17,9 @@ class MethodSize
         $this->sus = $sus;
     }
 
+    /**
+     * @throws \Elfiggo\Brobdingnagian\Exception\MethodSizeTooLarge
+     */
     public function check()
     {
         $lineSize = $this->sus->getEndLine() - $this->sus->getStartLine();
