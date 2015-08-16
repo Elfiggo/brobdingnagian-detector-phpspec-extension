@@ -33,7 +33,7 @@ class ClassListener implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            'beforeExample' => array('performBrobdingnagian', 15)
+            'afterSpecification' => array('performBrobdingnagian', 15)
         );
     }
 
