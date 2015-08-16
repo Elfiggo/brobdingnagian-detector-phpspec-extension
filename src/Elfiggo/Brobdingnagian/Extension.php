@@ -13,7 +13,7 @@ class Extension implements ExtensionInterface
      */
     public function load(ServiceContainer $container)
     {
-        $container->setShared('elfiggo.brobdingnagian.listener.class_listener', function ($c) {
+        $container->setShared('event_dispatcher.listeners.class_listener', function (ServiceContainer $c) {
             return new ClassListener();
         });
     }
