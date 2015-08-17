@@ -3,13 +3,20 @@
 namespace Elfiggo\Brobdingnagian\Listener;
 
 use Elfiggo\Brobdingnagian\Detector\Detector;
-use PhpSpec\Event\ExampleEvent;
 use PhpSpec\Event\SpecificationEvent;
-use ReflectionClass;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ClassListener implements EventSubscriberInterface
 {
+    /**
+     * @var Detector
+     */
+    private $detector;
+
+    public function __construct(Detector $detector)
+    {
+        $this->detector = $detector;
+    }
     /**
      * Returns an array of event names this subscriber wants to listen to.
      *
@@ -40,11 +47,11 @@ class ClassListener implements EventSubscriberInterface
 
     /**
      * @param SpecificationEvent $specificationEvent
-     * @param Detector $detector
      * @return \PhpSpec\Loader\Node\ExampleNode
      */
-    public function performBrobdingnagian(SpecificationEvent $specificationEvent, Detector $detector)
+    public function performBrobdingnagian(SpecificationEvent $specificationEvent)
     {
-        $detector->analyse($specificationEvent);
+        $this->detector->analyse($specificationEvent);
     }
+
 }

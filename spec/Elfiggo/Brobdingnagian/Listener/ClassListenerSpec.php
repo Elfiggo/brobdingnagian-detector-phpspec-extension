@@ -7,8 +7,14 @@ use PhpSpec\Event\SpecificationEvent;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
+
 class ClassListenerSpec extends ObjectBehavior
 {
+    function let(Detector $detector)
+    {
+        $this->beConstructedWith($detector);
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Listener\ClassListener');
@@ -19,9 +25,9 @@ class ClassListenerSpec extends ObjectBehavior
         $this->shouldHaveType('Symfony\Component\EventDispatcher\EventSubscriberInterface');
     }
 
-    function it_should_call_check_size_when_before_example_runs(SpecificationEvent $specificationEvent, Detector $detector)
+    function it_should_call_check_size_when_before_specification_runs(SpecificationEvent $specificationEvent, Detector $detector)
     {
-        $this->performBrobdingnagian($specificationEvent, $detector);
+        $this->performBrobdingnagian($specificationEvent);
         $detector->analyse($specificationEvent)->shouldHaveBeenCalled();
     }
 }
