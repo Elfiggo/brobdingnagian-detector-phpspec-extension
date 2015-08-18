@@ -31,6 +31,7 @@ class ClassSizeSpec extends ObjectBehavior
     function it_complains_if_class_size_is_too_large(ReflectionClass $sus)
     {
         $sus->getEndLine()->willReturn(self::GREATER_THAN_300);
+        $sus->getName()->willReturn("Elfiggo/Brobdingnagian/Detector/ClassSize");
         $this->shouldThrow(ClassSizeTooLarge::class)->duringCheck();
     }
 }
