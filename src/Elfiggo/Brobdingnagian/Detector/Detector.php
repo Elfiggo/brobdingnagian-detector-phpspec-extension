@@ -4,11 +4,12 @@ namespace Elfiggo\Brobdingnagian\Detector;
 
 
 use PhpSpec\Event\SpecificationEvent;
+use ReflectionClass;
 
 class Detector
 {
     /**
-     * @var SpecificationEvent
+     * @var ReflectionClass
      */
     private $sus;
 
@@ -17,7 +18,8 @@ class Detector
      */
     public function analyse(SpecificationEvent $sus)
     {
-        $this->sus = $sus->getSpecification()->getClassReflection();
+        $class = $sus->getSpecification()->getTitle();
+        $this->sus = new ReflectionClass($class);
         $this->checkClass();
     }
 
