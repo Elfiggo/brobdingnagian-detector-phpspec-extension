@@ -23,7 +23,7 @@ class ClassSize
     public function check()
     {
         if ($this->sus->getEndLine() > 300) {
-            throw new \Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge;
+            throw new \Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge($this->sus->getName());
         }
     }
 }
