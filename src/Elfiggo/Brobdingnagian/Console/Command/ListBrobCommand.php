@@ -13,55 +13,7 @@ class ListBrobCommand extends Command
     {
         $this
             ->setName('run')
-            ->setDefinition(array(
-                new InputArgument(
-                    'spec',
-                    InputArgument::OPTIONAL,
-                    'Specs to run'
-                ),
-                new InputOption(
-                    'format',
-                    'f',
-                    InputOption::VALUE_REQUIRED,
-                    'Formatter'
-                ),
-                new InputOption(
-                    'stop-on-failure',
-                    null,
-                    InputOption::VALUE_NONE,
-                    'Stop on failure'
-                ),
-                new InputOption(
-                    'no-code-generation',
-                    null,
-                    InputOption::VALUE_NONE,
-                    'Do not prompt for missing method/class generation'
-                ),
-                new InputOption(
-                    'no-rerun',
-                    null,
-                    InputOption::VALUE_NONE,
-                    'Do not rerun the suite after code generation'
-                ),
-                new InputOption(
-                    'fake',
-                    null,
-                    InputOption::VALUE_NONE,
-                    'Automatically fake return values when possible'
-                ),
-                new InputOption(
-                    'bootstrap',
-                    'b',
-                    InputOption::VALUE_REQUIRED,
-                    'Bootstrap php file that is run before the specs'
-                ),
-                new InputOption(
-                    'list-brob',
-                    'lb',
-                    InputOption::VALUE_OPTIONAL,
-                    'List classes that are too large'
-                )
-            ))
+            ->setDefinition($this->phpspecList())
             ->setDescription('Runs specifications')
             ->setHelp(<<<EOF
 The <info>%command.name%</info> command runs specifications:
@@ -136,10 +88,68 @@ EOF
         $suite       = $container->get('loader.resource_loader')->load($locator, $linenum);
         $suiteRunner = $container->get('runner.suite');
 
-
+        $this->addCustomisation($input, $output);
 
         return $container->get('console.result_converter')->convert(
             $suiteRunner->run($suite)
+        );
+    }
+
+    private function addCustomisation(InputInterface $input, OutputInterface $output)
+    {
+        $output->writeln('Brob Customisation');
+    }
+
+    private function phpspecList()
+    {
+        return array(
+            new InputArgument(
+                'spec',
+                InputArgument::OPTIONAL,
+                'Specs to run'
+            ),
+            new InputOption(
+                'format',
+                'f',
+                InputOption::VALUE_REQUIRED,
+                'Formatter'
+            ),
+            new InputOption(
+                'stop-on-failure',
+                null,
+                InputOption::VALUE_NONE,
+                'Stop on failure'
+            ),
+            new InputOption(
+                'no-code-generation',
+                null,
+                InputOption::VALUE_NONE,
+                'Do not prompt for missing method/class generation'
+            ),
+            new InputOption(
+                'no-rerun',
+                null,
+                InputOption::VALUE_NONE,
+                'Do not rerun the suite after code generation'
+            ),
+            new InputOption(
+                'fake',
+                null,
+                InputOption::VALUE_NONE,
+                'Automatically fake return values when possible'
+            ),
+            new InputOption(
+                'bootstrap',
+                'b',
+                InputOption::VALUE_REQUIRED,
+                'Bootstrap php file that is run before the specs'
+            ),
+            new InputOption(
+                'list-brob',
+                'lb',
+                InputOption::VALUE_OPTIONAL,
+                'List classes that are too large'
+            )
         );
     }
 
