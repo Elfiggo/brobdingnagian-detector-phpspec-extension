@@ -23,7 +23,7 @@ class Extension implements ExtensionInterface
         $container->setShared('elfiggo.brobdingnagian.detector', function (ServiceContainer $c) {
             return new Detector();
         });
-        $container->setShared('console.commands.list_brob', function (ServiceContainer $c) {
+        $container->setShared('console.commands.run', function (ServiceContainer $c) {
             return new ListBrobCommand();
         });
     }
