@@ -1,6 +1,7 @@
 <?php
 namespace Elfiggo\Brobdingnagian\Console\Command;
 
+use PhpSpec\ServiceContainer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
@@ -88,16 +89,16 @@ EOF
         $suite       = $container->get('loader.resource_loader')->load($locator, $linenum);
         $suiteRunner = $container->get('runner.suite');
 
-        $this->addCustomisation($input, $output);
+        $this->addCustomisation($container, $output);
 
         return $container->get('console.result_converter')->convert(
             $suiteRunner->run($suite)
         );
     }
 
-    private function addCustomisation(InputInterface $input, OutputInterface $output)
+    private function addCustomisation(ServiceContainer $container, OutputInterface $output)
     {
-        $output->writeln('Brob Customisation');
+//        $output->writeln('Brob Customisation');
     }
 
     private function phpspecList()

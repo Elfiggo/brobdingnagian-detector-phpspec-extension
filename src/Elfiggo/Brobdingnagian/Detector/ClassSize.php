@@ -1,6 +1,5 @@
 <?php
 
-namespace Elfiggo\Brobdingnagian\Detector;
 
 use ReflectionClass;
 
