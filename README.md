@@ -6,9 +6,17 @@ Detects if your class and methods are too big and suggest to extract responsibil
 
 Add the following to your `phpspec.yml` under `extensions`
 
-> Elfiggo\Brobdingnagian\Extension
+    extensions:
+        -Elfiggo\Brobdingnagian\Extension
 
 See [PhpSpec Extension Documentation](http://www.phpspec.net/en/latest/cookbook/extensions.html) if you are having trouble
+
+## Parameters
+
+    brobdingnagian:
+        class_size: 300
+        method_size: 15
+        dependancies: 3
 
 ## To Do - Brobdingnagian
 
