@@ -16,13 +16,15 @@ See [PhpSpec Extension Documentation](http://www.phpspec.net/en/latest/cookbook/
     brobdingnagian:
         class_size: 300
         method_size: 15
-        dependancies: 3
+        dependencies: 3
         
 ## Usage
 
+Use as normal with phpspec, if you want to disable exceptions for Brobdingnagian and list the
+classes, methods or dependencies instead, then pass the following flag.
+
     phpspec r --listbrob
     
-Disable exceptions and list classes, methods and dependancies that are too large
 
 ## Supported PHP Versions
 
@@ -35,8 +37,8 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
 1. Configurable limits
     * Look for configurable limit in spec file or set default if not set.
     * Configure Brob Exceptions to not throw if using list
-2. Number of Class Dependancies
-    * Count number of dependancies
+2. Number of Class dependencies
+    * Count number of dependencies
     * add configurable limit
 3. Count number of methods
     * Add configurable limits
