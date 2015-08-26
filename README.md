@@ -35,8 +35,8 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
 ## To Do - Brobdingnagian
 
 1. Configurable limits
-    * Look for configurable limit in spec file or set default if not set.
     * Configure Brob Exceptions to not throw if using list
+    * Use Param values instead
 2. Number of Class dependencies
     * Count number of dependencies
     * add configurable limit
