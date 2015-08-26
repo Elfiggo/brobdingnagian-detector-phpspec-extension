@@ -17,6 +17,18 @@ See [PhpSpec Extension Documentation](http://www.phpspec.net/en/latest/cookbook/
         class_size: 300
         method_size: 15
         dependancies: 3
+        
+## Usage
+
+    phpspec r --listbrob
+    
+Disable exceptions and list classes, methods and dependancies that are too large
+
+## Supported PHP Versions
+
+Currently PHP 5.5 and above
+
+Follows [php security support](http://php.net/supported-versions.php) release cycle for minimum supported versions
 
 ## To Do - Brobdingnagian
 
