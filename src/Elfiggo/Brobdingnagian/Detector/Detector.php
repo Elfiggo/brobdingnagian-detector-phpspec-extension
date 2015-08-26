@@ -3,6 +3,7 @@
 namespace Elfiggo\Brobdingnagian\Detector;
 
 
+use Elfiggo\Brobdingnagian\Param\Params;
 use PhpSpec\Event\SpecificationEvent;
 use ReflectionClass;
 
@@ -14,12 +15,19 @@ class Detector
     private $sus;
 
     /**
-     * @param SpecificationEvent $sus
+     * @var Params
      */
-    public function analyse(SpecificationEvent $sus)
+    private $param;
+
+    /**
+     * @param SpecificationEvent $sus
+     * @param Params $param
+     */
+    public function analyse(SpecificationEvent $sus, Params $param)
     {
         $class = $sus->getSpecification()->getTitle();
         $this->sus = new ReflectionClass($class);
+        $this->param = $param;
         $this->checkClass();
     }
 
@@ -28,7 +36,7 @@ class Detector
      */
     public function checkClass()
     {
-        $classSize = new ClassSize($this->sus);
+        $classSize = new ClassSize($this->sus, $this->param);
         $classSize->check();
     }
 }

@@ -6,6 +6,7 @@ use Elfiggo\Brobdingnagian\Console;
 use Elfiggo\Brobdingnagian\Console\Command\ListBrobCommand;
 use Elfiggo\Brobdingnagian\Detector\Detector;
 use Elfiggo\Brobdingnagian\Listener\ClassListener;
+use Elfiggo\Brobdingnagian\Param\Params;
 use PhpSpec\Extension\ExtensionInterface;
 use PhpSpec\ServiceContainer;
 
@@ -22,6 +23,9 @@ class Extension implements ExtensionInterface
         });
         $container->setShared('elfiggo.brobdingnagian.detector', function (ServiceContainer $c) {
             return new Detector();
+        });
+        $container->setShared('elfiggo.brobdingnagian.detector', function (ServiceContainer $c) {
+            return new Params($c);
         });
         $container->setShared('console.commands.run', function (ServiceContainer $c) {
             return new ListBrobCommand();
