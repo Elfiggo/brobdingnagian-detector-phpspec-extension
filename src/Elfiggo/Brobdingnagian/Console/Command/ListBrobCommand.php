@@ -89,16 +89,53 @@ EOF
         $suite       = $container->get('loader.resource_loader')->load($locator, $linenum);
         $suiteRunner = $container->get('runner.suite');
 
-        $this->addCustomisation($container, $output);
+        $this->addParamCustomisation($container);
+        $this->setListBrobFlag($container, $input);
 
         return $container->get('console.result_converter')->convert(
             $suiteRunner->run($suite)
         );
     }
 
-    private function addCustomisation(ServiceContainer $container, OutputInterface $output)
+    private function addParamCustomisation(ServiceContainer $container)
     {
-//        $output->writeln('Brob Customisation');
+        $params = array();
+
+        if (is_array($container->getParam('brobdingnagian'))) {
+
+            $params = $container->getParam('brobdingnagian');
+
+            if (!isset($container->getParam('brobdingnagian')['class_size'])) {
+                array_merge($params, array('class_size' => 300));
+            }
+
+            if (!isset($container->getParam('brobdingnagian')['method_size'])) {
+                array_merge($params, array('method_size' => 15));
+            }
+
+            if (!isset($container->getParam('brobdingnagian')['dependencies'])) {
+                array_merge($params, array('dependencies' => 3));
+            }
+
+        } else {
+
+            array_merge($params, array('class_size' => 300));
+            array_merge($params, array('method_size' => 15));
+            array_merge($params, array('dependencies' => 3));
+
+        }
+
+        $container->setParam('brobdingnagian', $params);
+
+    }
+
+    private function setListBrobFlag(ServiceContainer $container, InputInterface $input)
+    {
+        if ($input->hasOption('list-brob')) {
+            $container->setParam('list-brob', true);
+        } else {
+            $container->setParam('list-brob', false);
+        }
     }
 
     private function phpspecList()
