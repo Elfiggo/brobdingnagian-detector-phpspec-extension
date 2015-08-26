@@ -9,17 +9,29 @@ class Params
     const CLASS_SIZE = 300;
 
     /**
-     * @var array
+     * @var ServiceContainer
      */
     private $params;
 
-    public function __construct(ServiceContainer $c)
+    /**
+     * @var InputInterface
+     */
+    private $input;
+
+
+    public function __construct(ServiceContainer $serviceContainer)
     {
-        $this->params = $c->getParam('brobdingnagian');
+        $this->input = $serviceContainer->get('console.input');
+        $this->params = $serviceContainer->getParam('brobdingnagian');
     }
 
     public function getClassSize()
     {
-         return $this->params['class_size'] ?: self::CLASS_SIZE;
+         return (int) $this->params['class-size'] ?: self::CLASS_SIZE;
+    }
+
+    public function getBrobList()
+    {
+        return isset($this->params['list-brob']) ? $this->params['list-brob'] : $this->input->getOption('list-brob');
     }
 }
