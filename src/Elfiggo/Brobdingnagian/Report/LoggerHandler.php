@@ -2,12 +2,17 @@
 
 namespace Elfiggo\Brobdingnagian\Report;
 
-use ReflectionClass;
-
 class LoggerHandler implements Handler
 {
+    private $log = [];
+
     public function act($message, $class)
     {
-        // TODO: Implement act() method.
+        $this->log[] = ['message' => $message, 'class' => $class];
+    }
+
+    public function messages()
+    {
+        return $this->log;
     }
 }

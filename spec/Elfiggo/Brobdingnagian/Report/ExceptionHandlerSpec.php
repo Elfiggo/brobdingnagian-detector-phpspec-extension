@@ -4,7 +4,6 @@ namespace spec\Elfiggo\Brobdingnagian\Report;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use ReflectionClass;
 
 class ExceptionHandlerSpec extends ObjectBehavior
 {

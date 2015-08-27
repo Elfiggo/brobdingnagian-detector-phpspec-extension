@@ -16,4 +16,21 @@ class LoggerHandlerSpec extends ObjectBehavior
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Report\Handler');
     }
+
+    function it_should_return_an_array_of_messages()
+    {
+        $this->act('Error 1', 'ClassSize');
+        $this->act('Error 2', 'ClassSize');
+        $this->act('Error 3', 'ClassSize');
+        $this->act('Error 4', 'ClassSize');
+
+        $recordedMessages = [
+            ['message' => 'Error 1', 'class' => 'ClassSize'],
+            ['message' => 'Error 2', 'class' => 'ClassSize'],
+            ['message' => 'Error 3', 'class' => 'ClassSize'],
+            ['message' => 'Error 4', 'class' => 'ClassSize'],
+        ];
+
+        $this->messages()->shouldReturn($recordedMessages);
+    }
 }
