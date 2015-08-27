@@ -7,7 +7,7 @@ use Elfiggo\Brobdingnagian\Console\Command\ListBrobCommand;
 use Elfiggo\Brobdingnagian\Detector\Detector;
 use Elfiggo\Brobdingnagian\Listener\ClassListener;
 use Elfiggo\Brobdingnagian\Param\Params;
-use Elfiggo\Brobdingnagian\Report\ReporterHandler;
+use Elfiggo\Brobdingnagian\Report\Reporter;
 use PhpSpec\Extension\ExtensionInterface;
 use PhpSpec\ServiceContainer;
 
@@ -20,8 +20,13 @@ class Extension implements ExtensionInterface
     public function load(ServiceContainer $container)
     {
         $container->setShared('event_dispatcher.listeners.class_listener', function (ServiceContainer $c) {
-            return new ClassListener($c->get('elfiggo.brobdingnagian.detector'));
+            return new ClassListener(
+                $c->get('elfiggo.brobdingnagian.detector'),
+                $c->get('elfiggo.brobdingnagian.params'),
+                $c->get('elfiggo.brobdingnagian.reporter')
+            );
         });
+
 
         $container->setShared('elfiggo.brobdingnagian.detector', function () {
             return new Detector();

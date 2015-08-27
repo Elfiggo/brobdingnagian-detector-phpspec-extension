@@ -12,9 +12,9 @@ use Prophecy\Argument;
 
 class ClassListenerSpec extends ObjectBehavior
 {
-    function let(Detector $detector)
+    function let(Detector $detector, Params $params, Reporter $reporter)
     {
-        $this->beConstructedWith($detector);
+        $this->beConstructedWith($detector, $params, $reporter);
     }
 
     function it_is_initializable()

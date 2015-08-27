@@ -15,9 +15,11 @@ class ClassListener implements EventSubscriberInterface
      */
     private $detector;
 
-    public function __construct(Detector $detector)
+    public function __construct(Detector $detector, Params $params, Reporter $reporter)
     {
         $this->detector = $detector;
+        $this->params = $params;
+        $this->reporter = $reporter;
     }
     /**
      * Returns an array of event names this subscriber wants to listen to.
@@ -49,13 +51,11 @@ class ClassListener implements EventSubscriberInterface
 
     /**
      * @param SpecificationEvent $specificationEvent
-     * @param Params $params
-     * @param Reporter $reporter
      * @return \PhpSpec\Loader\Node\ExampleNode
      */
-    public function performBrobdingnagian(SpecificationEvent $specificationEvent, Params $params, Reporter $reporter)
+    public function performBrobdingnagian(SpecificationEvent $specificationEvent)
     {
-        $this->detector->analyse($specificationEvent, $params, $reporter);
+        $this->detector->analyse($specificationEvent, $this->params, $this->reporter);
     }
 
 }
