@@ -9,7 +9,9 @@ class ExceptionHandler implements Handler
     public function act($message, $class)
     {
         switch($class) {
-            case 'ClassSize': throw new ClassSizeTooLarge($message);break;
+            case 'Elfiggo\Brobdingnagian\Detector\ClassSize':
+                throw new ClassSizeTooLarge($message);
+                break;
             default:break;
         }
     }
