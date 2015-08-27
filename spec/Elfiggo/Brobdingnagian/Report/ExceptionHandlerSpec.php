@@ -19,6 +19,6 @@ class ExceptionHandlerSpec extends ObjectBehavior
 
     function it_should_throw_a_class_size_exception()
     {
-        $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge')->duringAct('A message', 'ClassSize');
+        $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge')->duringAct('A message', 'Elfiggo\Brobdingnagian\Detector\ClassSize');
     }
 }
