@@ -36,7 +36,7 @@ class ClassSizeSpec extends ObjectBehavior
         $sus->getEndLine()->willReturn(self::GREATER_THAN_300);
         $params->getClassSize()->willReturn(self::LESS_THAN_300);
         $sus->getName()->willReturn("Elfiggo/Brobdingnagian/Detector/ClassSize");
-        $reporter->act('Elfiggo/Brobdingnagian/Detector/ClassSize', 'Elfiggo\Brobdingnagian\Detector\ClassSize')->willThrow(ClassSizeTooLarge::class);
+        $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\ClassSize')->willThrow(ClassSizeTooLarge::class);
         $this->shouldThrow(ClassSizeTooLarge::class)->duringCheck();
     }
 }

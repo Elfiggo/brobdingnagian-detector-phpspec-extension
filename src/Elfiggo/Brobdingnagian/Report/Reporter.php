@@ -3,8 +3,9 @@
 namespace Elfiggo\Brobdingnagian\Report;
 
 use Elfiggo\Brobdingnagian\Param\Params;
+use ReflectionClass;
 
-class Reporter implements Handler
+class Reporter
 {
 
     private $handler;
@@ -21,8 +22,9 @@ class Reporter implements Handler
         return get_class($this->handler);
     }
 
-    public function act($string, $class)
+    public function act(ReflectionClass $sus, $class)
     {
-        $this->handler->act($string, $class);
+        $message = $sus->getName() . ' (' . $sus->getEndLine() . ')';
+        $this->handler->act($message, $class);
     }
 }

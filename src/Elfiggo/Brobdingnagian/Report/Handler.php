@@ -5,5 +5,5 @@ namespace Elfiggo\Brobdingnagian\Report;
 
 interface Handler
 {
-    public function act($string, $class);
+    public function act($message, $class);
 } 
