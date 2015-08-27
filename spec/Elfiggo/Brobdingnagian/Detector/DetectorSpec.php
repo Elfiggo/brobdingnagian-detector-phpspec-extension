@@ -3,6 +3,7 @@
 namespace spec\Elfiggo\Brobdingnagian\Detector;
 
 use Elfiggo\Brobdingnagian\Param\Params;
+use Elfiggo\Brobdingnagian\Report\Reporter;
 use PhpSpec\Event\SpecificationEvent;
 use PhpSpec\Loader\Node\SpecificationNode;
 use PhpSpec\ObjectBehavior;
@@ -16,13 +17,13 @@ class DetectorSpec extends ObjectBehavior
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\Detector');
     }
 
-    function it_should_analyse_the_class_size(SpecificationEvent $specificationEvent, SpecificationNode $specificationNode, Params $params)
+    function it_should_analyse_the_class_size(SpecificationEvent $specificationEvent, SpecificationNode $specificationNode, Params $params, Reporter $reporter)
     {
         $specificationEvent->getSpecification()->willReturn($specificationNode);
         $specificationNode->getTitle()->willReturn('Elfiggo\Brobdingnagian\Detector\ClassSize');
         $this->shouldNotThrow('Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge');
         $params->getClassSize()->willReturn(200);
-        $this->analyse($specificationEvent, $params);
+        $this->analyse($specificationEvent, $params, $reporter);
     }
 
 }

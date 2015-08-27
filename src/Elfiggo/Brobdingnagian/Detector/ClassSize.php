@@ -3,6 +3,7 @@
 namespace Elfiggo\Brobdingnagian\Detector;
 
 use Elfiggo\Brobdingnagian\Param\Params;
+use Elfiggo\Brobdingnagian\Report\Reporter;
 use ReflectionClass;
 
 class ClassSize
@@ -16,11 +17,16 @@ class ClassSize
      * @var params
      */
     private $params;
+    /**
+     * @var Reporter
+     */
+    private $reporter;
 
-    public function __construct(ReflectionClass $sus, Params $params)
+    public function __construct(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
         $this->sus = $sus;
         $this->params = $params;
+        $this->reporter = $reporter;
     }
 
     /**
@@ -29,7 +35,7 @@ class ClassSize
     public function check()
     {
         if ($this->sus->getEndLine() > $this->params->getClassSize()) {
-            throw new \Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge($this->sus->getName());
+            $this->reporter->act($this->sus->getName(), self::class);
         }
     }
 }

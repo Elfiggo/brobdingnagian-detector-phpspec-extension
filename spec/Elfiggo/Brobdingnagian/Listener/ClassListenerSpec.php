@@ -4,6 +4,7 @@ namespace spec\Elfiggo\Brobdingnagian\Listener;
 
 use Elfiggo\Brobdingnagian\Detector\Detector;
 use Elfiggo\Brobdingnagian\Param\Params;
+use Elfiggo\Brobdingnagian\Report\Reporter;
 use PhpSpec\Event\SpecificationEvent;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -26,9 +27,9 @@ class ClassListenerSpec extends ObjectBehavior
         $this->shouldHaveType('Symfony\Component\EventDispatcher\EventSubscriberInterface');
     }
 
-    function it_should_call_check_size_when_before_specification_runs(SpecificationEvent $specificationEvent, Detector $detector, Params $params)
+    function it_should_call_check_size_when_before_specification_runs(SpecificationEvent $specificationEvent, Detector $detector, Params $params, Reporter $reporter)
     {
-        $this->performBrobdingnagian($specificationEvent, $params);
-        $detector->analyse($specificationEvent, $params)->shouldHaveBeenCalled();
+        $this->performBrobdingnagian($specificationEvent, $params, $reporter);
+        $detector->analyse($specificationEvent, $params, $reporter)->shouldHaveBeenCalled();
     }
 }
