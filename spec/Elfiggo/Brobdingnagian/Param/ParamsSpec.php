@@ -36,28 +36,28 @@ class ParamsSpec extends ObjectBehavior
 
     function it_should_return_brob_list_from_phpspec_yml(ServiceContainer $serviceContainer, InputInterface $input)
     {
-        $input->getOption('list-brob')->willReturn(false);
+        $input->getOption('list-brob')->willReturn(null);
         $serviceContainer->getParam('brobdingnagian')->willReturn(array('list-brob' => true));
         $this->getBrobList()->shouldReturn(true);
     }
 
     function it_should_not_return_brob_list_from_option(ServiceContainer $serviceContainer, InputInterface $input)
     {
-        $input->getOption('list-brob')->willReturn(false);
+        $input->getOption('list-brob')->willReturn("false");
         $serviceContainer->getParam('brobdingnagian')->willReturn(null);
         $this->getBrobList()->shouldReturn(false);
     }
 
     function it_should_not_return_brob_list_from_phpspec_yml(ServiceContainer $serviceContainer, InputInterface $input)
     {
-        $input->getOption('list-brob')->willReturn(true);
+        $input->getOption('list-brob')->willReturn("true");
         $serviceContainer->getParam('brobdingnagian')->willReturn(null);
         $this->getBrobList()->shouldReturn(true);
     }
 
     function it_should_return_brob_list_from_option(ServiceContainer $serviceContainer, InputInterface $input)
     {
-        $input->getOption('list-brob')->willReturn(true);
+        $input->getOption('list-brob')->willReturn("true");
         $serviceContainer->getParam('brobdingnagian')->willReturn(null);
         $this->getBrobList()->shouldReturn(true);
     }

@@ -140,8 +140,8 @@ EOF
             new InputOption(
                 'list-brob',
                 'lb',
-                InputOption::VALUE_OPTIONAL,
-                'List classes that are too large'
+                InputOption::VALUE_REQUIRED,
+                'List classes that are too large, set value to true'
             )
         );
     }
