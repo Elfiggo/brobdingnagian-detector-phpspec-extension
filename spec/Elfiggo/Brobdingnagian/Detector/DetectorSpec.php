@@ -22,7 +22,9 @@ class DetectorSpec extends ObjectBehavior
         $specificationEvent->getSpecification()->willReturn($specificationNode);
         $specificationNode->getTitle()->willReturn('Elfiggo\Brobdingnagian\Detector\ClassSize');
         $this->shouldNotThrow('Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge');
+        $this->shouldNotThrow('Elfiggo\Brobdingnagian\Exception\DependenciesSizeTooLarge');
         $params->getClassSize()->willReturn(200);
+        $params->getDependenciesLimit()->willReturn(2);
         $this->analyse($specificationEvent, $params, $reporter);
     }
 

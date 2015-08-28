@@ -14,8 +14,8 @@ See [PhpSpec Extension Documentation](http://www.phpspec.net/en/latest/cookbook/
 ## Parameters
 
     brobdingnagian:
-        class_size: 300
-        method_size: 15
+        class-size: 300
+        method-size: 15
         dependencies: 3
         list-brob: true|false
         

@@ -37,11 +37,18 @@ class Detector
         $this->param = $param;
         $this->reporter = $reporter;
         $this->checkClass();
+        $this->checkDependencies();
     }
 
     public function checkClass()
     {
         $classSize = new ClassSize($this->sus, $this->param, $this->reporter);
         $classSize->check();
+    }
+
+    public function checkDependencies()
+    {
+        $dependenciesSize = new DependenciesSize($this->sus, $this->param, $this->reporter);
+        $dependenciesSize->check();
     }
 }

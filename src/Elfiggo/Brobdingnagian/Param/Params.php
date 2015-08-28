@@ -7,6 +7,7 @@ use PhpSpec\ServiceContainer;
 class Params
 {
     const CLASS_SIZE = 300;
+    const DEPENDENCIES_SIZE = 3;
 
     /**
      * @var ServiceContainer
@@ -45,5 +46,10 @@ class Params
     private function listBrobConfig()
     {
         return isset($this->params['list-brob']) ? $this->params['list-brob'] : false;
+    }
+
+    public function getDependenciesLimit()
+    {
+        return (int) $this->params['dependencies'] ?: self::DEPENDENCIES_SIZE;
     }
 }

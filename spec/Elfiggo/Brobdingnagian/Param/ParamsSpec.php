@@ -61,4 +61,10 @@ class ParamsSpec extends ObjectBehavior
         $serviceContainer->getParam('brobdingnagian')->willReturn(null);
         $this->getBrobList()->shouldReturn(true);
     }
+
+    function it_should_return_the_default_number_of_dependencies(ServiceContainer $serviceContainer)
+    {
+        $serviceContainer->getParam('brobdingnagian')->willReturn(null);
+        $this->getDependenciesLimit()->shouldReturn(3);
+    }
 }
