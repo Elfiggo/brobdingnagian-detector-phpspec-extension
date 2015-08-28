@@ -39,14 +39,19 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
 1. Configurable limits
     * <del>Configure Brob Exceptions to not throw if using list</del>
 2. Number of Class dependencies
-    * Count number of dependencies
+    * <del>Count number class construct dependencies</del>
     * add configurable limit
+    * add error type
 3. Count number of methods
     * Add configurable limits
+    * add error type
 4.  Size of methods
-    * Check each method in class size
+    * Check each method size
     * Add configurable limits
-5. Add List output option of all in CSV format
+    * add error type
+5. Add List output formatter
+    * table view (default)
+    * exportable option of all in CSV format
 6. Ship It! (East Croydon)
 7. Add Dictionary of suggestible class names for roles
 8. Ship it! (Blackpool)
