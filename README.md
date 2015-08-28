@@ -17,13 +17,15 @@ See [PhpSpec Extension Documentation](http://www.phpspec.net/en/latest/cookbook/
         class_size: 300
         method_size: 15
         dependencies: 3
+        list-brob: true|false
         
 ## Usage
 
 Use as normal with phpspec, if you want to disable exceptions for Brobdingnagian and list the
-classes, methods or dependencies instead, then pass the following flag.
+classes, methods or dependencies instead, then pass the following flag, this has precedence over the phpspec.yml parameter.
 
-    phpspec r --listbrob
+    phpspec r --list-brob=true (Turns Exceptions Off)
+    phpspec r --list-brob=false (Turns Exceptions On)
     
 
 ## Supported PHP Versions
