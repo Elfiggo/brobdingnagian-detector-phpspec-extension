@@ -52,6 +52,7 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
 5. Add List output formatter
     * table view (default)
     * exportable option of all in CSV format
+    * add class size error type
 6. Ship It! (East Croydon)
 7. Add Dictionary of suggestible class names for roles
 8. Ship it! (Blackpool)
