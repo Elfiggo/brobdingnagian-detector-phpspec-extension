@@ -34,11 +34,16 @@ class Params
     {
         return null !== $this->input->getOption('list-brob') ?
             $this->listBrobOption() :
-            $this->params['list-brob'] ;
+            $this->listBrobConfig() ;
     }
 
     private function listBrobOption()
     {
         return strtolower($this->input->getOption('list-brob')) == 'true';
+    }
+
+    private function listBrobConfig()
+    {
+        return isset($this->params['list-brob']) ?: strtolower($this->params['list-brob']) == 'true';
     }
 }

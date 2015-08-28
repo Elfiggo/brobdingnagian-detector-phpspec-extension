@@ -35,7 +35,7 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
 ## To Do - Brobdingnagian
 
 1. Configurable limits
-    * Configure Brob Exceptions to not throw if using list
+    * <del>Configure Brob Exceptions to not throw if using list</del>
 2. Number of Class dependencies
     * Count number of dependencies
     * add configurable limit
