@@ -40,13 +40,14 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>Configure Brob Exceptions to not throw if using list</del>
 2. Number of Class dependencies
     * <del>Count number class construct dependencies</del>
-    * add configurable limit
+    * <del>add configurable limit</del>
     * add error type
 3. Count number of methods
     * Add configurable limits
     * add error type
 4.  Size of methods
     * Check each method size
+    * Check number of method dependencies
     * Add configurable limits
     * add error type
 5. Add List output formatter
