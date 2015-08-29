@@ -16,6 +16,7 @@ See [PhpSpec Extension Documentation](http://www.phpspec.net/en/latest/cookbook/
     brobdingnagian:
         class-size: 300
         method-size: 15
+        number-of-methods: 5
         dependencies: 3
         list-brob: true|false
         
@@ -36,19 +37,19 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
 
 ## To Do - Brobdingnagian
 
-1. Configurable limits
+1. <del>Configurable limits</del>
     * <del>Configure Brob Exceptions to not throw if using list</del>
-2. Number of Class dependencies
+2. <del>Number of Class dependencies</del>
     * <del>Count number class construct dependencies</del>
     * <del>add configurable limit</del>
     * <del>add error type</del>
 3. Count number of methods
-    * Add configurable limits
+    * <del>Add configurable limits</del>
     * <del>add error type</del>
 4.  Size of methods
     * Check each method size
     * Check number of method dependencies
-    * Add configurable limits
+    * <del>Add configurable limits</del>
     * <del>add error type</del>
 5. Add List output formatter
     * table view (default)

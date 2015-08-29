@@ -8,6 +8,9 @@ class Params
 {
     const CLASS_SIZE = 300;
     const DEPENDENCIES_SIZE = 3;
+    const NUMBER_OF_METHODS = 5;
+    const METHOD_SIZE = 15;
+    const LIST_BROB = false;
 
     /**
      * @var ServiceContainer
@@ -45,11 +48,21 @@ class Params
 
     private function listBrobConfig()
     {
-        return isset($this->params['list-brob']) ? $this->params['list-brob'] : false;
+        return isset($this->params['list-brob']) ? $this->params['list-brob'] : self::LIST_BROB;
     }
 
     public function getDependenciesLimit()
     {
         return (int) $this->params['dependencies'] ?: self::DEPENDENCIES_SIZE;
+    }
+
+    public function getNumberOfMethods()
+    {
+        return (int) $this->params['number-of-methods'] ?: self::NUMBER_OF_METHODS;
+    }
+
+    public function getMethodSize()
+    {
+        return (int) $this->params['method-size'] ?: self::METHOD_SIZE;
     }
 }

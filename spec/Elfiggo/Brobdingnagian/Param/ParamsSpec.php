@@ -67,4 +67,35 @@ class ParamsSpec extends ObjectBehavior
         $serviceContainer->getParam('brobdingnagian')->willReturn(null);
         $this->getDependenciesLimit()->shouldReturn(3);
     }
+
+    function it_should_return_the_configured_number_of_dependencies(ServiceContainer $serviceContainer)
+    {
+        $serviceContainer->getParam('brobdingnagian')->willReturn(array('dependencies' => 2));
+        $this->getDependenciesLimit()->shouldReturn(2);
+    }
+
+    function it_should_return_the_default_number_of_methods(ServiceContainer $serviceContainer)
+    {
+        $serviceContainer->getParam('brobdingnagian')->willReturn(null);
+        $this->getNumberOfMethods()->shouldReturn(5);
+    }
+
+    function it_should_return_the_configured_number_of_methods(ServiceContainer $serviceContainer)
+    {
+        $serviceContainer->getParam('brobdingnagian')->willReturn(array('number-of-methods' => 2));
+        $this->getNumberOfMethods()->shouldReturn(2);
+    }
+
+    function it_should_return_the_default_method_size(ServiceContainer $serviceContainer)
+    {
+        $serviceContainer->getParam('brobdingnagian')->willReturn(null);
+        $this->getMethodSize()->shouldReturn(15);
+    }
+
+    function it_should_return_the_configured_method_size(ServiceContainer $serviceContainer)
+    {
+        $serviceContainer->getParam('brobdingnagian')->willReturn(array('method-size' => 2));
+        $this->getMethodSize()->shouldReturn(2);
+    }
+
 }
