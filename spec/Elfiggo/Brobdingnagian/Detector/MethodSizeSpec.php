@@ -23,6 +23,7 @@ class MethodSizeSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\MethodSize');
+        $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\Detection');
     }
 
     function it_does_not_complain_about_method_size(ReflectionMethod $sus)

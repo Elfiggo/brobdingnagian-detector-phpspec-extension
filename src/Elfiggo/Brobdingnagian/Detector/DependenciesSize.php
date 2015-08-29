@@ -6,7 +6,7 @@ use Elfiggo\Brobdingnagian\Param\Params;
 use Elfiggo\Brobdingnagian\Report\Reporter;
 use ReflectionClass;
 
-class DependenciesSize
+class DependenciesSize implements Detection
 {
 
     /**

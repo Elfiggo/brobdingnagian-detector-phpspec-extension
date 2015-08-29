@@ -38,17 +38,31 @@ class Detector
         $this->reporter = $reporter;
         $this->checkClass();
         $this->checkDependencies();
+        $this->checkNumberOfMethods();
+        $this->checkMethodSize();
     }
 
-    public function checkClass()
+    private function checkClass()
     {
         $classSize = new ClassSize($this->sus, $this->param, $this->reporter);
         $classSize->check();
     }
 
-    public function checkDependencies()
+    private function checkDependencies()
     {
         $dependenciesSize = new DependenciesSize($this->sus, $this->param, $this->reporter);
         $dependenciesSize->check();
+    }
+
+    private function checkNumberOfMethods()
+    {
+//        $dependenciesSize = new NumberOfMethods($this->sus, $this->param, $this->reporter);
+//        $dependenciesSize->check();
+    }
+
+    private function checkMethodSize()
+    {
+//        $dependenciesSize = new MethodSize($this->sus, $this->param, $this->reporter);
+//        $dependenciesSize->check();
     }
 }

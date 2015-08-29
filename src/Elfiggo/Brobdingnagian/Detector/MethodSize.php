@@ -4,7 +4,7 @@ namespace Elfiggo\Brobdingnagian\Detector;
 
 use ReflectionMethod;
 
-class MethodSize
+class MethodSize implements Detection
 {
 
     /**
