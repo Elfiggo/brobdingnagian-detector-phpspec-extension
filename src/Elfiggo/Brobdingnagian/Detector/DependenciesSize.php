@@ -43,7 +43,7 @@ class DependenciesSize
             $reflectionMethod = $this->sus->getMethod('__construct');
 
             if ($reflectionMethod->getNumberOfParameters() > $this->params->getDependenciesLimit()) {
-                $this->reporter->act($this->sus, self::class);
+                $this->reporter->act($this->sus, self::class, 'Dependencies size');
             }
         }
     }

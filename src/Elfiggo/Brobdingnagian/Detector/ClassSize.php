@@ -35,7 +35,7 @@ class ClassSize
     public function check()
     {
         if ($this->sus->getEndLine() > $this->params->getClassSize()) {
-            $this->reporter->act($this->sus, self::class);
+            $this->reporter->act($this->sus, self::class, 'Class size');
         }
     }
 }

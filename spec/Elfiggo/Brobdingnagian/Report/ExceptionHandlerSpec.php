@@ -4,6 +4,7 @@ namespace spec\Elfiggo\Brobdingnagian\Report;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use ReflectionClass;
 
 class ExceptionHandlerSpec extends ObjectBehavior
 {
@@ -17,8 +18,8 @@ class ExceptionHandlerSpec extends ObjectBehavior
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Report\Handler');
     }
 
-    function it_should_throw_a_class_size_exception()
+    function it_should_throw_a_class_size_exception(ReflectionClass $sus)
     {
-        $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge')->duringAct('A message', 'Elfiggo\Brobdingnagian\Detector\ClassSize');
+        $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge')->duringAct($sus, 'Elfiggo\Brobdingnagian\Detector\ClassSize', 'Class size');
     }
 }

@@ -32,7 +32,7 @@ class DependenciesSizeSpec extends ObjectBehavior
     {
         $reflectionMethod->getNumberOfParameters()->willReturn(2);
         $params->getDependenciesLimit()->willReturn(self::DEPENDENCIES_LIMIT);
-        $reporter->act($sus, self::class)->shouldNotBeCalled();
+        $reporter->act($sus, self::class, 'Dependencies size')->shouldNotBeCalled();
         $this->check();
     }
 
@@ -40,7 +40,7 @@ class DependenciesSizeSpec extends ObjectBehavior
     {
         $params->getDependenciesLimit()->willReturn(self::DEPENDENCIES_LIMIT);
         $sus->getName()->willReturn("Elfiggo/Brobdingnagian/Detector/DependenciesSize");
-        $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\DependenciesSize')->willThrow(DependenciesSizeTooLarge::class);
+        $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\DependenciesSize', 'Dependencies size')->willThrow(DependenciesSizeTooLarge::class);
         $this->shouldThrow(DependenciesSizeTooLarge::class)->duringCheck();
     }
 }

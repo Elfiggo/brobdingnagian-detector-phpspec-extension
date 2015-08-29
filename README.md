@@ -41,19 +41,19 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
 2. Number of Class dependencies
     * <del>Count number class construct dependencies</del>
     * <del>add configurable limit</del>
-    * add error type
+    * <del>add error type</del>
 3. Count number of methods
     * Add configurable limits
-    * add error type
+    * <del>add error type</del>
 4.  Size of methods
     * Check each method size
     * Check number of method dependencies
     * Add configurable limits
-    * add error type
+    * <del>add error type</del>
 5. Add List output formatter
     * table view (default)
     * exportable option of all in CSV format
-    * add class size error type
+    * <del>add class size error type</del>
 6. Ship It! (East Croydon)
 7. Add Dictionary of suggestible class names for roles
 8. Ship it! (Blackpool)
