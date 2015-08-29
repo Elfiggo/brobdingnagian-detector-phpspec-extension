@@ -5,6 +5,7 @@ namespace Elfiggo\Brobdingnagian\Report;
 use Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge;
 use Elfiggo\Brobdingnagian\Exception\DependenciesSizeTooLarge;
 use Elfiggo\Brobdingnagian\Exception\MethodSizeTooLarge;
+use Elfiggo\Brobdingnagian\Exception\TooManyMethodsDetected;
 use ReflectionClass;
 
 class ExceptionHandler implements Handler
