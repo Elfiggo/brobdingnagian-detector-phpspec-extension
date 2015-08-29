@@ -22,4 +22,19 @@ class ExceptionHandlerSpec extends ObjectBehavior
     {
         $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge')->duringAct($sus, 'Elfiggo\Brobdingnagian\Detector\ClassSize', 'Class size');
     }
+
+    function it_should_throw_a_dependencies_size_exception(ReflectionClass $sus)
+    {
+        $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\DependenciesSizeTooLarge')->duringAct($sus, 'Elfiggo\Brobdingnagian\Detector\DependenciesSize', 'Dependencies size');
+    }
+
+    function it_should_throw_a_method_size_exception(ReflectionClass $sus)
+    {
+        $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\MethodSizeTooLarge')->duringAct($sus, 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'Method size');
+    }
+
+    function it_should_throw_a_number_of_method_exception(ReflectionClass $sus)
+    {
+        $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\TooManyMethodsDetected')->duringAct($sus, 'Elfiggo\Brobdingnagian\Detector\MethodNumber', 'Detected method size');
+    }
 }

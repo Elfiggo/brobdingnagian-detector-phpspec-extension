@@ -28,7 +28,7 @@ class ClassSizeSpec extends ObjectBehavior
     {
         $params->getClassSize()->willReturn(self::LESS_THAN_300);
         $sus->getEndLine()->willReturn(self::LESS_THAN_300);
-        $this->check();
+        $this->shouldNotThrow(ClassSizeTooLarge::class)->duringCheck();
     }
 
     function it_complains_if_class_size_is_too_large(ReflectionClass $sus, Params $params, Reporter $reporter)

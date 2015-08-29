@@ -29,7 +29,7 @@ class MethodSizeSpec extends ObjectBehavior
     {
         $sus->getStartLine()->willReturn(0);
         $sus->getEndLine()->willReturn(self::LESS_THAN_20);
-        $this->check();
+        $this->shouldNotThrow(MethodSizeTooLarge::class)->duringCheck();
     }
 
     function it_should_throw_method_size_too_large_during_check(ReflectionMethod $sus)

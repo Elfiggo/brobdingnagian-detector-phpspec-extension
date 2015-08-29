@@ -33,7 +33,7 @@ class DependenciesSizeSpec extends ObjectBehavior
         $reflectionMethod->getNumberOfParameters()->willReturn(2);
         $params->getDependenciesLimit()->willReturn(self::DEPENDENCIES_LIMIT);
         $reporter->act($sus, self::class, 'Dependencies size')->shouldNotBeCalled();
-        $this->check();
+        $this->shouldNotThrow(DependenciesSizeTooLarge::class)->duringCheck();
     }
 
     function it_complains_if_the_number_of_dependencies_are_high(ReflectionClass $sus, Params $params, Reporter $reporter)
