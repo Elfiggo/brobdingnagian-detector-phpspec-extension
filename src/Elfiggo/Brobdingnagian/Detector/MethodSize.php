@@ -2,7 +2,9 @@
 
 namespace Elfiggo\Brobdingnagian\Detector;
 
-use ReflectionMethod;
+use Elfiggo\Brobdingnagian\Param\Params;
+use Elfiggo\Brobdingnagian\Report\Reporter;
+use ReflectionClass;
 
 class MethodSize implements Detection
 {
@@ -11,10 +13,20 @@ class MethodSize implements Detection
      * @var ReflectionClass
      */
     private $sus;
+    /**
+     * @var Params
+     */
+    private $params;
+    /**
+     * @var Reporter
+     */
+    private $reporter;
 
-    public function __construct(ReflectionMethod $sus)
+    public function __construct(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
         $this->sus = $sus;
+        $this->params = $params;
+        $this->reporter = $reporter;
     }
 
     /**
@@ -22,10 +34,14 @@ class MethodSize implements Detection
      */
     public function check()
     {
-        $lineSize = $this->sus->getEndLine() - $this->sus->getStartLine();
+        foreach($this->sus->getMethods() as $method)
+        {
+            $lineSize = $method->getEndLine() - $method->getStartLine();
+            if ($lineSize > $this->params->getMethodSize()) {
+                $this->reporter->act($this->sus, self::class, 'Method size');
+            }
 
-        if ($lineSize > 20) {
-            throw new \Elfiggo\Brobdingnagian\Exception\MethodSizeTooLarge;
+            //dependency check here
         }
     }
 }

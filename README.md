@@ -47,7 +47,7 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>Add configurable limits</del>
     * <del>add error type</del>
 4.  Size of methods
-    * Check each method size
+    * <del>Check each method size</del>
     * Check number of method dependencies
     * <del>Add configurable limits</del>
     * <del>add error type</del>
