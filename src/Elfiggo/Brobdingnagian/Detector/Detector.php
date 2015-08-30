@@ -56,8 +56,8 @@ class Detector
 
     private function checkNumberOfMethods()
     {
-//        $dependenciesSize = new NumberOfMethods($this->sus, $this->param, $this->reporter);
-//        $dependenciesSize->check();
+        $numberOfMethods = new NumberOfMethods($this->sus, $this->param, $this->reporter);
+        $numberOfMethods->check();
     }
 
     private function checkMethodSize()

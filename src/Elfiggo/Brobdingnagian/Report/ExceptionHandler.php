@@ -14,8 +14,6 @@ class ExceptionHandler implements Handler
      * @param ReflectionClass $sus
      * @param $class
      * @param $errorType
-     * @throws ClassSizeTooLarge
-     * @throws DependenciesSizeTooLarge
      */
     public function act(ReflectionClass $sus, $class, $errorType)
     {
@@ -31,7 +29,7 @@ class ExceptionHandler implements Handler
             case 'Elfiggo\Brobdingnagian\Detector\MethodSize':
                 throw new MethodSizeTooLarge($message);
                 break;
-            case 'Elfiggo\Brobdingnagian\Detector\MethodNumber':
+            case 'Elfiggo\Brobdingnagian\Detector\NumberOfMethods':
                 throw new TooManyMethodsDetected($message);
                 break;
             default:break;

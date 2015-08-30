@@ -2,6 +2,8 @@
 
 namespace Elfiggo\Brobdingnagian\Detector;
 
+use Elfiggo\Brobdingnagian\Param\Params;
+use Elfiggo\Brobdingnagian\Report\Reporter;
 use ReflectionClass;
 
 class NumberOfMethods implements Detection
@@ -11,14 +13,26 @@ class NumberOfMethods implements Detection
      * @var ReflectionClass
      */
     private $sus;
+    /**
+     * @var Params
+     */
+    private $params;
+    /**
+     * @var Reporter
+     */
+    private $reporter;
 
-    public function __construct(ReflectionClass $sus)
+    public function __construct(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
         $this->sus = $sus;
+        $this->params = $params;
+        $this->reporter = $reporter;
     }
 
     public function check()
     {
-        // TODO: Implement check() method.
+        if ($this->sus->getMethods() > $this->params->getNumberOfMethods()) {
+            $this->reporter->act($this->sus, self::class, 'Number of methods');
+        }
     }
 }

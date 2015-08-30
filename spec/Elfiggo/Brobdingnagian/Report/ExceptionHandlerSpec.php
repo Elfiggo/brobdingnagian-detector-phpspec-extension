@@ -35,6 +35,6 @@ class ExceptionHandlerSpec extends ObjectBehavior
 
     function it_should_throw_a_number_of_method_exception(ReflectionClass $sus)
     {
-        $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\TooManyMethodsDetected')->duringAct($sus, 'Elfiggo\Brobdingnagian\Detector\MethodNumber', 'Detected method size');
+        $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\TooManyMethodsDetected')->duringAct($sus, 'Elfiggo\Brobdingnagian\Detector\NumberOfMethods', 'Detected method size');
     }
 }

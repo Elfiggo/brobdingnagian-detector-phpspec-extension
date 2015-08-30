@@ -43,7 +43,7 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>Count number class construct dependencies</del>
     * <del>add configurable limit</del>
     * <del>add error type</del>
-3. Count number of methods
+3. <del>Count number of methods<
     * <del>Add configurable limits</del>
     * <del>add error type</del>
 4.  Size of methods
