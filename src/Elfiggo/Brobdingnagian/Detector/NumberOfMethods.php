@@ -31,7 +31,7 @@ class NumberOfMethods implements Detection
 
     public function check()
     {
-        if ($this->sus->getMethods() > $this->params->getNumberOfMethods()) {
+        if (count($this->sus->getMethods()) > $this->params->getNumberOfMethods()) {
             $this->reporter->act($this->sus, self::class, 'Number of methods');
         }
     }

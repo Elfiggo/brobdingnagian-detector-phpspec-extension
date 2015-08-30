@@ -33,8 +33,8 @@ class NumberOfMethodsSpec extends ObjectBehavior
 
     function it_does_complain_if_the_number_of_methods_is_too_large(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
-        $params->getNumberOfMethods()->willReturn(self::DEFAULT_NUMBER_OF_METHODS);
-        $sus->getMethods()->willReturn(9);
+        $params->getNumberOfMethods()->willReturn(1);
+        $sus->getMethods()->willReturn(['method 1', 'method 2']);
         $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\NumberOfMethods', 'Number of methods')->willThrow(TooManyMethodsDetected::class);
         $this->shouldThrow(TooManyMethodsDetected::class)->duringCheck();
     }
