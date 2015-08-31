@@ -27,4 +27,11 @@ class LoggerHandler implements Handler
     {
         return $this->log;
     }
+
+    public function output()
+    {
+        foreach($this->logger->messages() as $data) {
+            print($data['message']);
+        }
+    }
 }

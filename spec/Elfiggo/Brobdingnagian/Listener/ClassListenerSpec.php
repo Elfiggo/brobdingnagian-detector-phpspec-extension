@@ -4,6 +4,7 @@ namespace spec\Elfiggo\Brobdingnagian\Listener;
 
 use Elfiggo\Brobdingnagian\Detector\Detector;
 use Elfiggo\Brobdingnagian\Param\Params;
+use Elfiggo\Brobdingnagian\Report\LoggerHandler;
 use Elfiggo\Brobdingnagian\Report\Reporter;
 use PhpSpec\Event\SpecificationEvent;
 use PhpSpec\ObjectBehavior;
@@ -12,9 +13,9 @@ use Prophecy\Argument;
 
 class ClassListenerSpec extends ObjectBehavior
 {
-    function let(Detector $detector, Params $params, Reporter $reporter)
+    function let(Detector $detector, Params $params, Reporter $reporter, LoggerHandler $loggerHandler)
     {
-        $this->beConstructedWith($detector, $params, $reporter);
+        $this->beConstructedWith($detector, $params, $reporter, $loggerHandler);
     }
 
     function it_is_initializable()
