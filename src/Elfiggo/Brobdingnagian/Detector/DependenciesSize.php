@@ -39,12 +39,12 @@ class DependenciesSize implements Detection
      */
     public function check()
     {
-        if ($this->sus->hasMethod('__construct')) {
-            $reflectionMethod = $this->sus->getMethod('__construct');
+        foreach ($this->sus->getMethods() as $method) {
 
-            if ($reflectionMethod->getNumberOfParameters() > $this->params->getDependenciesLimit()) {
+            if ($method->getNumberOfParameters() > $this->params->getDependenciesLimit()) {
                 $this->reporter->act($this->sus, self::class, 'Dependencies size');
             }
+
         }
     }
 }

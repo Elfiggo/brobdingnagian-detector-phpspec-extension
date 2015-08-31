@@ -46,13 +46,15 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
 3. <del>Count number of methods</del>
     * <del>Add configurable limits</del>
     * <del>add error type</del>
-4.  Size of methods
+4.  <del>Size of methods</del>
     * <del>Check each method size</del>
-    * Check number of method dependencies
+    * <del>Check number of method dependencies</del>
     * <del>Add configurable limits</del>
     * <del>add error type</del>
 5. Add List output formatter
     * table view (default)
+    * check number of class dependencies
+    * add configurable filter for number of methods (public|private|protected)??
     * exportable option of all in CSV format
     * <del>add class size error type</del>
 6. Ship It! (East Croydon)

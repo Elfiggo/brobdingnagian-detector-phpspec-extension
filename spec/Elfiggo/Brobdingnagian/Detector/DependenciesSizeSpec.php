@@ -17,8 +17,7 @@ class DependenciesSizeSpec extends ObjectBehavior
     function let(ReflectionClass $sus, Params $params, Reporter $reporter, ReflectionMethod $reflectionMethod)
     {
         $reflectionMethod->getNumberOfParameters()->willReturn(7);
-        $sus->hasMethod('__construct')->willReturn(true);
-        $sus->getMethod('__construct')->willReturn($reflectionMethod);
+        $sus->getMethods()->willReturn([$reflectionMethod]);
 
         $this->beConstructedWith($sus, $params, $reporter);
     }
