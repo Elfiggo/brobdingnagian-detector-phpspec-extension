@@ -53,8 +53,7 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>add error type</del>
 5. Add List output formatter
     * table view (default)
-    * check number of class dependencies
-    * add configurable filter for number of methods (public|private|protected)??
+    * update log message/exception message where appropriate
     * exportable option of all in CSV format
     * <del>add class size error type</del>
 6. Ship It! (East Croydon)
@@ -63,3 +62,9 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
 9. Ask to split class/methods into a helper class
     * Create New Helper class with Spec stubs of current class
 10. Ship it! (Derby)
+
+## Backlog
+
+1. add configurable filter for number of methods (public|private|protected)
+2. add traits detector
+3. add interfaces detector
