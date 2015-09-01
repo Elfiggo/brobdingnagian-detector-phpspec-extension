@@ -57,13 +57,18 @@ class LoggerHandler implements Handler
     public function output()
     {
         $this->io->writeln('');
-        $this->io->writeln('-----------------------------------------------------------------------------');
-        $this->io->writeln('------------------------- Brobdingnagian Table ------------------------------');
-        $this->io->writeln('-----------------------------------------------------------------------------');
-        foreach($this->messages() as $class => $data) {
-            $this->io->writeln($data['errorType'] . '   |   ' . $data['message']);
+        $this->io->writeln('--------------------------------------------------------------------------------');
+        $this->io->writeln('------------------------- Brobdingnagian Table ---------------------------------');
+        $this->io->writeln('--------------------------------------------------------------------------------');
+        $this->io->writeln('|  ' . str_pad('Error Type',17) . '  |  ' . str_pad('Message', 52) . '  |');
+        foreach($this->messages() as $class => $messages) {
+            $this->io->writeln(str_pad('-- Class -- ', 22) . '|  ' . str_pad($class, 67 - strlen($class)));
+            foreach ($messages as $data) {
+                $this->io->writeln('|  ' . str_pad($data['errorType'],17) . '  |  ' . $data['message']);
+            }
         }
-        $this->io->writeln('-----------------------------------------------------------------------------');
-        $this->io->writeln('-----------------------------------------------------------------------------');
+        $this->io->writeln('--------------------------------------------------------------------------------');
+        $this->io->writeln('--------------------------------- End ------------------------------------------');
+        $this->io->writeln('--------------------------------------------------------------------------------');
     }
 }
