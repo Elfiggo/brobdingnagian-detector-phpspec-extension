@@ -32,7 +32,7 @@ class NumberOfMethods implements Detection
     public function check()
     {
         if (count($this->sus->getMethods()) > $this->params->getNumberOfMethods()) {
-            $this->reporter->act($this->sus, self::class, 'Number of methods');
+            $this->reporter->act($this->sus, self::class, "{$this->sus->getName()} has too many methods (" . count($this->sus->getMethods()) .')');
         }
     }
 }

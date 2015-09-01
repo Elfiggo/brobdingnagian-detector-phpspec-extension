@@ -39,11 +39,12 @@ class LoggerHandler implements Handler
 
     public function output()
     {
+        $this->io->writeln('');
         $this->io->writeln('-----------------------------------------------------------------------------');
         $this->io->writeln('------------------------- Brobdingnagian Table ------------------------------');
         $this->io->writeln('-----------------------------------------------------------------------------');
         foreach($this->messages() as $data) {
-            $this->io->writeln($data['errorType'] . '     ' . $data['message'] . '      ' . $data['class']);
+            $this->io->writeln($data['errorType'] . '   |   ' . $data['message']);
         }
         $this->io->writeln('-----------------------------------------------------------------------------');
         $this->io->writeln('-----------------------------------------------------------------------------');

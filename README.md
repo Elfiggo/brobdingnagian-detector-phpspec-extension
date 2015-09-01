@@ -53,7 +53,7 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>add error type</del>
 5. Add List output formatter
     * <del>table view (default)</del>
-    * update log message/exception message where appropriate
+    * <del>update log message/exception message where appropriate</del>
     * exportable option of all in CSV format
     * <del>add class size error type</del>
 6. Ship It! (East Croydon)

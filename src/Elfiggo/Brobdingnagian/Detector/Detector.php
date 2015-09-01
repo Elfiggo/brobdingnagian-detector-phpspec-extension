@@ -62,7 +62,7 @@ class Detector
 
     private function checkMethodSize()
     {
-//        $dependenciesSize = new MethodSize($this->sus, $this->param, $this->reporter);
-//        $dependenciesSize->check();
+        $dependenciesSize = new MethodSize($this->sus, $this->param, $this->reporter);
+        $dependenciesSize->check();
     }
 }

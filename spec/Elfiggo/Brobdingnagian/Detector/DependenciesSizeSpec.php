@@ -36,11 +36,16 @@ class DependenciesSizeSpec extends ObjectBehavior
         $this->shouldNotThrow(DependenciesSizeTooLarge::class)->duringCheck();
     }
 
-    function it_complains_if_the_number_of_dependencies_are_high(ReflectionClass $sus, Params $params, Reporter $reporter)
+    function it_complains_if_the_number_of_dependencies_are_high(ReflectionClass $sus, Params $params, Reporter $reporter, ReflectionMethod $reflectionMethod)
     {
         $params->getDependenciesLimit()->willReturn(self::DEPENDENCIES_LIMIT);
         $sus->getName()->willReturn("Elfiggo/Brobdingnagian/Detector/DependenciesSize");
-        $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\DependenciesSize', 'Dependencies size')->willThrow(DependenciesSizeTooLarge::class);
+
+        $reflectionMethod->getName()->willReturn('random_method');
+        $reflectionMethod->getNumberOfParameters()->willReturn(20);
+
+        $sus->getMethods()->willReturn([$reflectionMethod]);
+        $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\DependenciesSize', 'random_method has too many dependencies (20)')->willThrow(DependenciesSizeTooLarge::class);
         $this->shouldThrow(DependenciesSizeTooLarge::class)->duringCheck();
     }
 }

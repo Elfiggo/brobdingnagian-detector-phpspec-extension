@@ -42,7 +42,7 @@ class DependenciesSize implements Detection
         foreach ($this->sus->getMethods() as $method) {
 
             if ($method->getNumberOfParameters() > $this->params->getDependenciesLimit()) {
-                $this->reporter->act($this->sus, self::class, 'Dependencies size');
+                $this->reporter->act($this->sus, self::class, "{$method->getName()} has too many dependencies ({$method->getNumberOfParameters()})");
             }
 
         }

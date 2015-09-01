@@ -33,6 +33,7 @@ class MethodSizeSpec extends ObjectBehavior
     {
         $method->getEndLine()->willReturn(self::LESS_THAN_15);
         $method->getStartLine()->willReturn(0);
+        $method->getName()->willReturn('method_size');
 
         $sus->getMethods()->willReturn([$method]);
         $params->getMethodSize()->willReturn(15);
@@ -44,10 +45,14 @@ class MethodSizeSpec extends ObjectBehavior
     {
         $method->getStartLine()->willReturn(0);
         $method->getEndLine()->willReturn(self::GREATER_THAN_20);
+        $method->getName()->willReturn('method_size_1');
+
         $method2->getStartLine()->willReturn(0);
         $method2->getEndLine()->willReturn(self::GREATER_THAN_20);
+        $method2->getName()->willReturn('method_size_2');
+
         $sus->getMethods()->willReturn([$method]);
-        $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'Method size')->willThrow(MethodSizeTooLarge::class);
+        $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'method_size_1 size is 21 long')->willThrow(MethodSizeTooLarge::class);
         $params->getMethodSize()->willReturn(15);
         $this->shouldThrow(MethodSizeTooLarge::class)->duringCheck();
     }
@@ -56,8 +61,10 @@ class MethodSizeSpec extends ObjectBehavior
     {
         $method->getStartLine()->willReturn(self::START_LINE);
         $method->getEndLine()->willReturn(self::END_LINE);
+        $method->getName()->willReturn('method_size_1');
+
         $sus->getMethods()->willReturn([$method]);
-        $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'Method size')->willThrow(MethodSizeTooLarge::class);
+        $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'method_size_1 size is 40 long')->willThrow(MethodSizeTooLarge::class);
         $params->getMethodSize()->willReturn(15);
         $this->shouldThrow(MethodSizeTooLarge::class)->duringCheck();
     }

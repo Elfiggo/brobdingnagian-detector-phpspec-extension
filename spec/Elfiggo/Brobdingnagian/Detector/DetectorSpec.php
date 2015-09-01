@@ -25,6 +25,7 @@ class DetectorSpec extends ObjectBehavior
         $params->getClassSize()->willReturn(200);
         $params->getDependenciesLimit()->willReturn(2);
         $params->getNumberOfMethods()->willReturn(5);
+        $params->getMethodSize()->willReturn(10);
         $this->analyse($specificationEvent, $params, $reporter);
     }
 
@@ -36,6 +37,7 @@ class DetectorSpec extends ObjectBehavior
         $params->getClassSize()->willReturn(200);
         $params->getDependenciesLimit()->willReturn(2);
         $params->getNumberOfMethods()->willReturn(5);
+        $params->getMethodSize()->willReturn(10);
         $this->analyse($specificationEvent, $params, $reporter);
     }
 
@@ -47,6 +49,7 @@ class DetectorSpec extends ObjectBehavior
         $params->getClassSize()->willReturn(200);
         $params->getDependenciesLimit()->willReturn(2);
         $params->getNumberOfMethods()->willReturn(5);
+        $params->getMethodSize()->willReturn(10);
         $this->analyse($specificationEvent, $params, $reporter);
     }
 
