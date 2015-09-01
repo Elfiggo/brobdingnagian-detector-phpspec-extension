@@ -52,7 +52,7 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>Add configurable limits</del>
     * <del>add error type</del>
 5. Add List output formatter
-    * table view (default)
+    * <del>table view (default)</del>
     * update log message/exception message where appropriate
     * exportable option of all in CSV format
     * <del>add class size error type</del>
