@@ -3,14 +3,15 @@
 namespace spec\Elfiggo\Brobdingnagian\Report;
 
 use Elfiggo\Brobdingnagian\Param\Params;
+use PhpSpec\Console\IO;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
 class ReporterSpec extends ObjectBehavior
 {
-    function let(Params $params)
+    function let(Params $params, IO $io)
     {
-        $this->beConstructedWith($params);
+        $this->beConstructedWith($params, $io);
     }
 
     function it_is_initializable()

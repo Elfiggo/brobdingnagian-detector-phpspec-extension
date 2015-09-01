@@ -3,6 +3,7 @@
 namespace Elfiggo\Brobdingnagian\Report;
 
 use Elfiggo\Brobdingnagian\Param\Params;
+use PhpSpec\Console\IO;
 use ReflectionClass;
 
 class Reporter
@@ -10,10 +11,10 @@ class Reporter
 
     private $handler;
 
-    public function __construct(Params $params)
+    public function __construct(Params $params, IO $io)
     {
         $this->handler = $params->getBrobList() ?
-            new LoggerHandler() :
+            new LoggerHandler($io) :
             new ExceptionHandler();
     }
 

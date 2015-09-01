@@ -39,11 +39,14 @@ class Extension implements ExtensionInterface
         });
 
         $container->setShared('elfiggo.brobdingnagian.reporter', function (ServiceContainer $c) {
-            return new Reporter($c->get('elfiggo.brobdingnagian.params'));
+            return new Reporter(
+                $c->get('elfiggo.brobdingnagian.params'),
+                $c->get('console.io')
+            );
         });
 
         $container->setShared('elfiggo.brobdingnagian.logger', function (ServiceContainer $c) {
-            return new LoggerHandler();
+            return new LoggerHandler($c->get('console.io'));
         });
 
         $container->setShared('console.commands.run', function () {

@@ -2,12 +2,18 @@
 
 namespace spec\Elfiggo\Brobdingnagian\Report;
 
+use PhpSpec\Console\IO;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use ReflectionClass;
 
 class LoggerHandlerSpec extends ObjectBehavior
 {
+    function let(IO $io)
+    {
+        $this->beConstructedWith($io);
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Report\LoggerHandler');
