@@ -55,6 +55,7 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>table view (default)</del>
     * <del>update log message/exception message where appropriate</del>
     * add back error type
+    * group class messages together to be more meaningful in large lists
     * exportable option of all in CSV format
     * <del>add class size error type</del>
 6. Ship It! (East Croydon)
