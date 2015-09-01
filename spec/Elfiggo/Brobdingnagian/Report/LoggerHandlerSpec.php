@@ -26,16 +26,29 @@ class LoggerHandlerSpec extends ObjectBehavior
 
     function it_should_return_an_array_of_messages(ReflectionClass $sus)
     {
-        $this->act($sus, 'ClassSize', 'Error 1 class size is too large (1)');
-        $this->act($sus, 'MethodSize', 'Method size');
-        $this->act($sus, 'DependenciesSize', 'Dependencies Size');
-        $this->act($sus, 'ClassSize', 'Error 4 class size is too large (4)');
+        $sus->getName()->willReturn('LargeClass');
+        $this->act($sus, 'Elfiggo\Brobdingnagian\Detector\ClassSize', 'Error 1 class size is too large (1)');
+
+        $sus->getName()->willReturn('SmallMethod');
+        $this->act($sus, 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'Method size');
+
+        $sus->getName()->willReturn('DependenciesAreUs');
+        $this->act($sus, 'Elfiggo\Brobdingnagian\Detector\DependenciesSize', 'Dependencies Size');
+
+        $sus->getName()->willReturn('LargeClass');
+        $this->act($sus, 'Elfiggo\Brobdingnagian\Detector\ClassSize', 'Error 4 class size is too large (4)');
 
         $recordedMessages = [
-            ['message' => 'Error 1 class size is too large (1)', 'class' => 'ClassSize', 'errorType' => null],
-            ['message' => 'Method size', 'class' => 'MethodSize', 'errorType' => null],
-            ['message' => 'Dependencies Size', 'class' => 'DependenciesSize', 'errorType' => null],
-            ['message' => 'Error 4 class size is too large (4)', 'class' => 'ClassSize', 'errorType' => null],
+            'LargeClass' => [
+                ['message' => 'Error 1 class size is too large (1)', 'class' => 'Elfiggo\Brobdingnagian\Detector\ClassSize', 'errorType' => 'Class size'],
+                ['message' => 'Error 4 class size is too large (4)', 'class' => 'Elfiggo\Brobdingnagian\Detector\ClassSize', 'errorType' => 'Class size']
+            ],
+            'SmallMethod' => [
+                ['message' => 'Method size', 'class' => 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'errorType' => 'Method size']
+            ],
+            'DependenciesAreUs' => [
+                ['message' => 'Dependencies Size', 'class' => 'Elfiggo\Brobdingnagian\Detector\DependenciesSize', 'errorType' => 'Dependencies size']
+            ],
         ];
 
          $this->messages()->shouldBe($recordedMessages);

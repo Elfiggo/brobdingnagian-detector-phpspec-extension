@@ -54,8 +54,8 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
 5. Add List output formatter
     * <del>table view (default)</del>
     * <del>update log message/exception message where appropriate</del>
-    * add back error type
-    * group class messages together to be more meaningful in large lists
+    * <del>add back error type</del>
+    * <del>group class messages together to be more meaningful in large lists</del>
     * exportable option of all in CSV format
     * <del>add class size error type</del>
 6. Ship It! (East Croydon)

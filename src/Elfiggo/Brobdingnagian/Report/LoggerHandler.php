@@ -24,8 +24,26 @@ class LoggerHandler implements Handler
      */
     public function act(ReflectionClass $sus, $class, $message)
     {
-        $errorType = null;
-        $this->log[] = ['message' => $message, 'class' => $class, 'errorType' => $errorType];
+        $this->log[$sus->getName()][] = ['message' => $message, 'class' => $class, 'errorType' => $this->errorType($class)];
+    }
+
+    private function errorType($class)
+    {
+        switch($class) {
+            case 'Elfiggo\Brobdingnagian\Detector\ClassSize':
+                return 'Class size';
+                break;
+            case 'Elfiggo\Brobdingnagian\Detector\DependenciesSize':
+                return 'Dependencies size';
+                break;
+            case 'Elfiggo\Brobdingnagian\Detector\MethodSize':
+                return 'Method size';
+                break;
+            case 'Elfiggo\Brobdingnagian\Detector\NumberOfMethods':
+                return 'Too many methods';
+                break;
+            default:return 'Unknown';break;
+        }
     }
 
     /**
@@ -42,7 +60,7 @@ class LoggerHandler implements Handler
         $this->io->writeln('-----------------------------------------------------------------------------');
         $this->io->writeln('------------------------- Brobdingnagian Table ------------------------------');
         $this->io->writeln('-----------------------------------------------------------------------------');
-        foreach($this->messages() as $data) {
+        foreach($this->messages() as $class => $data) {
             $this->io->writeln($data['errorType'] . '   |   ' . $data['message']);
         }
         $this->io->writeln('-----------------------------------------------------------------------------');
