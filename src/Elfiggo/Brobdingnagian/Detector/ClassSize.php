@@ -37,7 +37,7 @@ class ClassSize implements Detection
     public function check()
     {
         if ($this->sus->getEndLine() > $this->params->getClassSize()) {
-            $this->reporter->act($this->sus, self::class, "{$this->sus->getName()} size is too large ({$this->sus->getEndLine()})");
+            $this->reporter->act($this->sus, self::class, "{$this->sus->getName()} class size is too large ({$this->sus->getEndLine()})");
         }
     }
 }

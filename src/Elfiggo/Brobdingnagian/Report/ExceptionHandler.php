@@ -15,10 +15,8 @@ class ExceptionHandler implements Handler
      * @param $class
      * @param $errorType
      */
-    public function act(ReflectionClass $sus, $class, $errorType)
+    public function act(ReflectionClass $sus, $class, $message)
     {
-        $message = $sus->getName() . ' (' . $sus->getEndLine() . ')';
-
         switch($class) {
             case 'Elfiggo\Brobdingnagian\Detector\ClassSize':
                 throw new ClassSizeTooLarge($message);

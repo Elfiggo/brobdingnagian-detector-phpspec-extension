@@ -22,8 +22,8 @@ class Reporter
         return get_class($this->handler);
     }
 
-    public function act(ReflectionClass $sus, $class, $errorType)
+    public function act(ReflectionClass $sus, $class, $message)
     {
-        $this->handler->act($sus, $class, $errorType);
+        $this->handler->act($sus, $class, $message);
     }
 }

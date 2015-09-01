@@ -9,8 +9,8 @@ interface Handler
     /**
      * @param ReflectionClass $sus
      * @param $class
-     * @param $errorType
+     * @param $message
      * @return mixed
      */
-    public function act(ReflectionClass $sus, $class, $errorType);
+    public function act(ReflectionClass $sus, $class, $message);
 } 

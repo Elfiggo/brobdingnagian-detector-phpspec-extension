@@ -20,12 +20,11 @@ class LoggerHandler implements Handler
     /**
      * @param ReflectionClass $sus
      * @param $class
-     * @param $errorType
+     * @param $message
      */
-    public function act(ReflectionClass $sus, $class, $errorType)
+    public function act(ReflectionClass $sus, $class, $message)
     {
-        $message = $sus->getName() . ' (' . $sus->getEndLine() . ')';
-
+        $errorType = null;
         $this->log[] = ['message' => $message, 'class' => $class, 'errorType' => $errorType];
     }
 

@@ -26,29 +26,18 @@ class LoggerHandlerSpec extends ObjectBehavior
 
     function it_should_return_an_array_of_messages(ReflectionClass $sus)
     {
-        $sus->getEndLine()->willReturn(1);
-        $sus->getName()->willReturn('Error 1');
-        $this->act($sus, 'ClassSize', 'Class size');
-
-        $sus->getEndLine()->willReturn(2);
-        $sus->getName()->willReturn('Error 2');
+        $this->act($sus, 'ClassSize', 'Error 1 class size is too large (1)');
         $this->act($sus, 'MethodSize', 'Method size');
-
-        $sus->getEndLine()->willReturn(3);
-        $sus->getName()->willReturn('Error 3');
         $this->act($sus, 'DependenciesSize', 'Dependencies Size');
-
-        $sus->getEndLine()->willReturn(4);
-        $sus->getName()->willReturn('Error 4');
-        $this->act($sus, 'ClassSize', 'Class size');
+        $this->act($sus, 'ClassSize', 'Error 4 class size is too large (4)');
 
         $recordedMessages = [
-            ['message' => 'Error 1 (1)', 'class' => 'ClassSize', 'errorType' => 'Class size'],
-            ['message' => 'Error 2 (2)', 'class' => 'MethodSize', 'errorType' => 'Method size'],
-            ['message' => 'Error 3 (3)', 'class' => 'DependenciesSize', 'errorType' => 'Dependencies Size'],
-            ['message' => 'Error 4 (4)', 'class' => 'ClassSize', 'errorType' => 'Class size'],
+            ['message' => 'Error 1 class size is too large (1)', 'class' => 'ClassSize', 'errorType' => null],
+            ['message' => 'Method size', 'class' => 'MethodSize', 'errorType' => null],
+            ['message' => 'Dependencies Size', 'class' => 'DependenciesSize', 'errorType' => null],
+            ['message' => 'Error 4 class size is too large (4)', 'class' => 'ClassSize', 'errorType' => null],
         ];
 
-        $this->messages()->shouldReturn($recordedMessages);
+         $this->messages()->shouldBe($recordedMessages);
     }
 }
