@@ -39,7 +39,7 @@ class LoggerHandler implements Handler
 
     public function output()
     {
-        foreach($this->logger->messages() as $data) {
+        foreach($this->messages() as $data) {
             $this->io->writeln($data['message']);
         }
     }

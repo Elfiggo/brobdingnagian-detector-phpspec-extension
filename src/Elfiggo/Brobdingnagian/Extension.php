@@ -41,7 +41,7 @@ class Extension implements ExtensionInterface
         $container->setShared('elfiggo.brobdingnagian.reporter', function (ServiceContainer $c) {
             return new Reporter(
                 $c->get('elfiggo.brobdingnagian.params'),
-                $c->get('console.io')
+                $c->get('elfiggo.brobdingnagian.logger')
             );
         });
 
