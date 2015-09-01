@@ -7,6 +7,7 @@ use Elfiggo\Brobdingnagian\Console\Command\ListBrobCommand;
 use Elfiggo\Brobdingnagian\Detector\Detector;
 use Elfiggo\Brobdingnagian\Listener\ClassListener;
 use Elfiggo\Brobdingnagian\Param\Params;
+use Elfiggo\Brobdingnagian\Report\ExceptionHandler;
 use Elfiggo\Brobdingnagian\Report\LoggerHandler;
 use Elfiggo\Brobdingnagian\Report\Reporter;
 use PhpSpec\Extension\ExtensionInterface;
@@ -41,12 +42,17 @@ class Extension implements ExtensionInterface
         $container->setShared('elfiggo.brobdingnagian.reporter', function (ServiceContainer $c) {
             return new Reporter(
                 $c->get('elfiggo.brobdingnagian.params'),
-                $c->get('elfiggo.brobdingnagian.logger')
+                $c->get('elfiggo.brobdingnagian.logger'),
+                $c->get('elfiggo.brobdingnagian.exception')
             );
         });
 
         $container->setShared('elfiggo.brobdingnagian.logger', function (ServiceContainer $c) {
             return new LoggerHandler($c->get('console.io'));
+        });
+
+        $container->setShared('elfiggo.brobdingnagian.exception', function (ServiceContainer $c) {
+            return new ExceptionHandler();
         });
 
         $container->setShared('console.commands.run', function () {
