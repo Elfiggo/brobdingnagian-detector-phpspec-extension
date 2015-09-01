@@ -7,7 +7,7 @@ Detects if your class and methods are too big and suggest to extract responsibil
 Add the following to your `phpspec.yml` under `extensions`
 
     extensions:
-        -Elfiggo\Brobdingnagian\Extension
+        - Elfiggo\Brobdingnagian\Extension
 
 See [PhpSpec Extension Documentation](http://www.phpspec.net/en/latest/cookbook/extensions.html) if you are having trouble
 
