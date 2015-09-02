@@ -70,13 +70,14 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>Check number of method dependencies</del>
     * <del>Add configurable limits</del>
     * <del>add error type</del>
-5. Add List output formatter
+5. <del>Add List output formatter</del>
     * <del>table view (default)</del>
     * <del>update log message/exception message where appropriate</del>
     * <del>add back error type</del>
     * <del>group class messages together to be more meaningful in large lists</del>
     * <del>exportable option of all in CSV format</del>
     * <del>add class size error type</del>
+    * refactoring period
 6. Ship It! (East Croydon)
 7. Add Dictionary of suggestible class names for roles
 8. Ship it! (Blackpool)
