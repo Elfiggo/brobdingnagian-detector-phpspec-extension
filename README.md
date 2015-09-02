@@ -36,6 +36,7 @@ See [PhpSpec Extension Documentation](http://www.phpspec.net/en/latest/cookbook/
         number-of-methods: 5
         dependencies: 3
         list-brob: true|false
+        create-csv: true|false
 
         
 ## Usage
@@ -74,7 +75,7 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>update log message/exception message where appropriate</del>
     * <del>add back error type</del>
     * <del>group class messages together to be more meaningful in large lists</del>
-    * exportable option of all in CSV format
+    * <del>exportable option of all in CSV format</del>
     * <del>add class size error type</del>
 6. Ship It! (East Croydon)
 7. Add Dictionary of suggestible class names for roles

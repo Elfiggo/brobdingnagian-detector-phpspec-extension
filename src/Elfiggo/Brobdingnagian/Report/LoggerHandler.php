@@ -71,4 +71,17 @@ class LoggerHandler implements Handler
         $this->io->writeln('--------------------------------- End ------------------------------------------');
         $this->io->writeln('--------------------------------------------------------------------------------');
     }
+
+    public function csvOutput()
+    {
+        $fp = fopen('brobdingnagian-test-results.csv', 'w+');
+        fputcsv($fp, ['Error Type', 'Message']);
+        foreach($this->messages() as $class => $messages) {
+            fputcsv($fp, ['Class', $class]);
+            foreach ($messages as $data) {
+                fputcsv($fp, [$data['errorType'], $data['message']]);
+            }
+        }
+        fclose($fp);
+    }
 }

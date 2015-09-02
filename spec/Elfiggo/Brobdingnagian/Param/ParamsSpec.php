@@ -98,4 +98,18 @@ class ParamsSpec extends ObjectBehavior
         $this->getMethodSize()->shouldReturn(2);
     }
 
+    function it_should_return_the_csv_option(ServiceContainer $serviceContainer)
+    {
+        $serviceContainer->getParam('brobdingnagian')->willReturn(array('create-csv' => true));
+        $this->getCsv()->shouldReturn(true);
+    }
+
+    function it_should_return_the_default_csv_option(ServiceContainer $serviceContainer)
+    {
+        $serviceContainer->getParam('brobdingnagian')->willReturn(null);
+        $this->getCsv()->shouldReturn(false);
+    }
+
+
+
 }

@@ -71,6 +71,10 @@ class ClassListener implements EventSubscriberInterface
         if ($this->logger->messages()) {
             $this->logger->output();
         }
+
+        if ($this->params->getCsv()) {
+            $this->logger->csvOutput();
+        }
     }
 
 }
