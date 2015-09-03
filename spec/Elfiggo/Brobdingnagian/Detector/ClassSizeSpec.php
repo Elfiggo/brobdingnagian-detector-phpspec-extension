@@ -14,22 +14,17 @@ class ClassSizeSpec extends ObjectBehavior
     const LESS_THAN_300 = 299;
     const GREATER_THAN_300 = 301;
 
-    function let(ReflectionClass $sus, Params $params, Reporter $reporter)
-    {
-        $this->beConstructedWith($sus, $params, $reporter);
-    }
-
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\ClassSize');
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\Detection');
     }
 
-    function it_does_not_complain_if_the_class_size_is_not_too_large(ReflectionClass $sus, Params $params)
+    function it_does_not_complain_if_the_class_size_is_not_too_large(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
         $params->getClassSize()->willReturn(self::LESS_THAN_300);
         $sus->getEndLine()->willReturn(self::LESS_THAN_300);
-        $this->shouldNotThrow(ClassSizeTooLarge::class)->duringCheck();
+        $this->shouldNotThrow(ClassSizeTooLarge::class)->duringCheck($sus, $params, $reporter);
     }
 
     function it_complains_if_class_size_is_too_large(ReflectionClass $sus, Params $params, Reporter $reporter)
@@ -38,6 +33,6 @@ class ClassSizeSpec extends ObjectBehavior
         $params->getClassSize()->willReturn(self::LESS_THAN_300);
         $sus->getName()->willReturn("Elfiggo/Brobdingnagian/Detector/ClassSize");
         $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\ClassSize', 'Elfiggo/Brobdingnagian/Detector/ClassSize class size is too large (301)')->willThrow(ClassSizeTooLarge::class);
-        $this->shouldThrow(ClassSizeTooLarge::class)->duringCheck();
+        $this->shouldThrow(ClassSizeTooLarge::class)->duringCheck($sus, $params, $reporter);
     }
 }

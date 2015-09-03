@@ -6,6 +6,7 @@ namespace Elfiggo\Brobdingnagian\Detector;
 use Elfiggo\Brobdingnagian\Param\Params;
 use Elfiggo\Brobdingnagian\Report\Reporter;
 use PhpSpec\Event\SpecificationEvent;
+use PhpSpec\Exception\Fracture\InterfaceNotImplementedException;
 use ReflectionClass;
 
 class Detector
@@ -26,6 +27,30 @@ class Detector
     private $reporter;
 
     /**
+     * @param array $detections
+     */
+    private $detections = [];
+
+
+    public function __construct(array $detections = [])
+    {
+        array_merge($this->coreDetections(), $detections);
+
+        foreach ($detections as $subject) {
+            if ($subject instanceof Detection) {
+                $this->detections[] = $subject;
+            } else {
+                throw new InterfaceNotImplementedException("Does not implement the Detection interface", $subject, 'Detection');
+            }
+        }
+    }
+
+    private function coreDetections()
+    {
+        return [new ClassSize(), new DependenciesSize(), new NumberOfMethods(), new MethodSize()];
+    }
+
+    /**
      * @param SpecificationEvent $sus
      * @param Params $param
      * @param Reporter $reporter
@@ -36,33 +61,10 @@ class Detector
         $this->sus = new ReflectionClass($class);
         $this->param = $param;
         $this->reporter = $reporter;
-        $this->checkClass();
-        $this->checkDependencies();
-        $this->checkNumberOfMethods();
-        $this->checkMethodSize();
+
+        foreach ($this->detections as $detection) {
+            $detection->check($sus, $param, $reporter);
+        }
     }
 
-    private function checkClass()
-    {
-        $classSize = new ClassSize($this->sus, $this->param, $this->reporter);
-        $classSize->check();
-    }
-
-    private function checkDependencies()
-    {
-        $dependenciesSize = new DependenciesSize($this->sus, $this->param, $this->reporter);
-        $dependenciesSize->check();
-    }
-
-    private function checkNumberOfMethods()
-    {
-        $numberOfMethods = new NumberOfMethods($this->sus, $this->param, $this->reporter);
-        $numberOfMethods->check();
-    }
-
-    private function checkMethodSize()
-    {
-        $dependenciesSize = new MethodSize($this->sus, $this->param, $this->reporter);
-        $dependenciesSize->check();
-    }
 }

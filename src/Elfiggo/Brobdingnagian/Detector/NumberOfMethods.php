@@ -10,29 +10,14 @@ class NumberOfMethods implements Detection
 {
 
     /**
-     * @var ReflectionClass
+     * @param ReflectionClass $sus
+     * @param Params $params
+     * @param Reporter $reporter
      */
-    private $sus;
-    /**
-     * @var Params
-     */
-    private $params;
-    /**
-     * @var Reporter
-     */
-    private $reporter;
-
-    public function __construct(ReflectionClass $sus, Params $params, Reporter $reporter)
+    public function check(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
-        $this->sus = $sus;
-        $this->params = $params;
-        $this->reporter = $reporter;
-    }
-
-    public function check()
-    {
-        if (count($this->sus->getMethods()) > $this->params->getNumberOfMethods()) {
-            $this->reporter->act($this->sus, self::class, "{$this->sus->getName()} has too many methods (" . count($this->sus->getMethods()) .')');
+        if (count($sus->getMethods()) > $params->getNumberOfMethods()) {
+            $reporter->act($sus, self::class, "{$sus->getName()} has too many methods (" . count($sus->getMethods()) .')');
         }
     }
 }

@@ -11,33 +11,14 @@ use ReflectionClass;
 class ClassSize implements Detection
 {
     /**
-     * @var ReflectionClass
+     * @param ReflectionClass $sus
+     * @param Params $params
+     * @param Reporter $reporter
      */
-    private $sus;
-
-    /**
-     * @var params
-     */
-    private $params;
-    /**
-     * @var Reporter
-     */
-    private $reporter;
-
-    public function __construct(ReflectionClass $sus, Params $params, Reporter $reporter)
+    public function check(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
-        $this->sus = $sus;
-        $this->params = $params;
-        $this->reporter = $reporter;
-    }
-
-    /**
-     * @throws \Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge
-     */
-    public function check()
-    {
-        if ($this->sus->getEndLine() > $this->params->getClassSize()) {
-            $this->reporter->act($this->sus, self::class, "{$this->sus->getName()} class size is too large ({$this->sus->getEndLine()})");
+        if ($sus->getEndLine() > $params->getClassSize()) {
+            $reporter->act($sus, self::class, "{$sus->getName()} class size is too large ({$sus->getEndLine()})");
         }
     }
 }

@@ -9,36 +9,19 @@ use ReflectionClass;
 class MethodSize implements Detection
 {
 
-    /**
-     * @var ReflectionClass
-     */
-    private $sus;
-    /**
-     * @var Params
-     */
-    private $params;
-    /**
-     * @var Reporter
-     */
-    private $reporter;
-
-    public function __construct(ReflectionClass $sus, Params $params, Reporter $reporter)
-    {
-        $this->sus = $sus;
-        $this->params = $params;
-        $this->reporter = $reporter;
-    }
 
     /**
-     * @throws \Elfiggo\Brobdingnagian\Exception\MethodSizeTooLarge
+     * @param ReflectionClass $sus
+     * @param Params $params
+     * @param Reporter $reporter
      */
-    public function check()
+    public function check(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
-        foreach($this->sus->getMethods() as $method)
+        foreach($sus->getMethods() as $method)
         {
             $lineSize = $method->getEndLine() - $method->getStartLine();
-            if ($lineSize > $this->params->getMethodSize()) {
-                $this->reporter->act($this->sus, self::class, "{$method->getName()} size is $lineSize lines long");
+            if ($lineSize > $params->getMethodSize()) {
+                $reporter->act($sus, self::class, "{$method->getName()} size is $lineSize lines long");
             }
         }
     }

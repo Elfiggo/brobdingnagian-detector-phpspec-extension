@@ -18,18 +18,13 @@ class MethodSizeSpec extends ObjectBehavior
     const START_LINE = 5;
     const END_LINE = 45;
 
-    function let(ReflectionClass $sus, Params $params, Reporter $reporter)
-    {
-        $this->beConstructedWith($sus, $params, $reporter);
-    }
-
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\MethodSize');
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\Detection');
     }
 
-    function it_does_not_complain_about_method_size(ReflectionClass $sus, Params $params, ReflectionMethod $method)
+    function it_does_not_complain_about_method_size(ReflectionClass $sus, Params $params, Reporter $reporter, ReflectionMethod $method)
     {
         $method->getEndLine()->willReturn(self::LESS_THAN_15);
         $method->getStartLine()->willReturn(0);
@@ -38,7 +33,7 @@ class MethodSizeSpec extends ObjectBehavior
         $sus->getMethods()->willReturn([$method]);
         $params->getMethodSize()->willReturn(15);
 
-        $this->shouldNotThrow(MethodSizeTooLarge::class)->duringCheck();
+        $this->shouldNotThrow(MethodSizeTooLarge::class)->duringCheck($sus, $params, $reporter);
     }
 
     function it_should_throw_method_size_too_large_during_check(ReflectionClass $sus, Params $params, ReflectionMethod $method, ReflectionMethod $method2, Reporter $reporter)
@@ -54,7 +49,7 @@ class MethodSizeSpec extends ObjectBehavior
         $sus->getMethods()->willReturn([$method]);
         $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'method_size_1 size is 21 lines long')->willThrow(MethodSizeTooLarge::class);
         $params->getMethodSize()->willReturn(15);
-        $this->shouldThrow(MethodSizeTooLarge::class)->duringCheck();
+        $this->shouldThrow(MethodSizeTooLarge::class)->duringCheck($sus, $params, $reporter);
     }
 
     function it_calculates_the_number_of_lines_in_a_method(ReflectionClass $sus, Params $params, ReflectionMethod $method, Reporter $reporter)
@@ -66,7 +61,7 @@ class MethodSizeSpec extends ObjectBehavior
         $sus->getMethods()->willReturn([$method]);
         $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'method_size_1 size is 40 lines long')->willThrow(MethodSizeTooLarge::class);
         $params->getMethodSize()->willReturn(15);
-        $this->shouldThrow(MethodSizeTooLarge::class)->duringCheck();
+        $this->shouldThrow(MethodSizeTooLarge::class)->duringCheck($sus, $params, $reporter);
     }
 
 }

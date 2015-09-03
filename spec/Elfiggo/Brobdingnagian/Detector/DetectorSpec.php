@@ -2,6 +2,8 @@
 
 namespace spec\Elfiggo\Brobdingnagian\Detector;
 
+use DateTime;
+use Elfiggo\Brobdingnagian\Detector\ClassSize;
 use Elfiggo\Brobdingnagian\Param\Params;
 use Elfiggo\Brobdingnagian\Report\Reporter;
 use PhpSpec\Event\SpecificationEvent;
@@ -12,9 +14,28 @@ use Prophecy\Argument;
 
 class DetectorSpec extends ObjectBehavior
 {
+    private $detections = [];
+
+    function let()
+    {
+        $this->beConstructedWith($this->detections);
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\Detector');
+    }
+
+    function it_should_not_throw_an_error_on_construction(ClassSize $classSize)
+    {
+        $this->detections = [$classSize];
+        $this->beConstructedWith($this->detections);
+    }
+
+    function it_should_throw_an_error_on_construction(ClassSize $classSize, DateTime $dateTime)
+    {
+        $this->detections = [$classSize, $dateTime];
+        $this->shouldThrow('PhpSpec\Exception\Fracture\InterfaceNotImplementedException')->during__construct($this->detections);
     }
 
     function it_should_analyse_the_class_size(SpecificationEvent $specificationEvent, SpecificationNode $specificationNode, Params $params, Reporter $reporter)

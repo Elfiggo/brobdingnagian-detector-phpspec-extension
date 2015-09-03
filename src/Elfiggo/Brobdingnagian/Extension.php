@@ -30,7 +30,6 @@ class Extension implements ExtensionInterface
             );
         });
 
-
         $container->setShared('elfiggo.brobdingnagian.detector', function () {
             return new Detector();
         });

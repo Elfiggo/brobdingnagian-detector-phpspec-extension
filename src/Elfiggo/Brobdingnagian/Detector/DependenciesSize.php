@@ -10,39 +10,16 @@ class DependenciesSize implements Detection
 {
 
     /**
-     * @var ReflectionClass
-     */
-    private $sus;
-    /**
-     * @var Params
-     */
-    private $params;
-    /**
-     * @var Reporter
-     */
-    private $reporter;
-
-    /**
      * @param ReflectionClass $sus
      * @param Params $params
      * @param Reporter $reporter
      */
-    public function __construct(ReflectionClass $sus, Params $params, Reporter $reporter)
+    public function check(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
-        $this->sus = $sus;
-        $this->params = $params;
-        $this->reporter = $reporter;
-    }
+        foreach ($sus->getMethods() as $method) {
 
-    /**
-     * @throws \Elfiggo\Brobdingnagian\Exception\DepedenciesSizeTooLarge
-     */
-    public function check()
-    {
-        foreach ($this->sus->getMethods() as $method) {
-
-            if ($method->getNumberOfParameters() > $this->params->getDependenciesLimit()) {
-                $this->reporter->act($this->sus, self::class, "{$method->getName()} has too many dependencies ({$method->getNumberOfParameters()})");
+            if ($method->getNumberOfParameters() > $params->getDependenciesLimit()) {
+                $reporter->act($sus, self::class, "{$method->getName()} has too many dependencies ({$method->getNumberOfParameters()})");
             }
 
         }
