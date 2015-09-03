@@ -52,8 +52,7 @@ class ClassListener implements EventSubscriberInterface
     {
         return array(
             'afterSpecification' => array('performBrobdingnagian', 15),
-            'afterSuite' => array('displayErrors', 15),
-            'afterSuite' => array('generateCsv', 15)
+            'afterSuite' => array(array('displayErrors', 15), array('generateCsv', 15)),
         );
     }
 

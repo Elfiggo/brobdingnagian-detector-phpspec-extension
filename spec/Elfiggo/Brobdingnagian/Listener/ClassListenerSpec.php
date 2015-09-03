@@ -69,4 +69,9 @@ class ClassListenerSpec extends ObjectBehavior
 
         $this->generateCsv();
     }
+
+    function it_should_return_array()
+    {
+        self::getSubscribedEvents()->shouldHaveCount(2);
+    }
 }
