@@ -33,4 +33,40 @@ class ClassListenerSpec extends ObjectBehavior
         $this->performBrobdingnagian($specificationEvent, $params, $reporter);
         $detector->analyse($specificationEvent, $params, $reporter)->shouldHaveBeenCalled();
     }
+
+    function it_should_output_a_message(Params $params, LoggerHandler $loggerHandler)
+    {
+        $params->getBrobList()->willReturn(true);
+        $loggerHandler->messages()->willReturn([1,2,3]);
+
+        $loggerHandler->output()->shouldBeCalled();
+
+        $this->displayErrors();
+    }
+
+    function it_should_not_output_a_message(Params $params, LoggerHandler $loggerHandler)
+    {
+        $params->getBrobList()->willReturn(false);
+        $loggerHandler->messages()->willReturn([1,2,3]);
+
+        $loggerHandler->output()->shouldNotBeCalled();
+
+        $this->displayErrors();
+    }
+
+    function it_should_generate_csv(Params $params, LoggerHandler $loggerHandler)
+    {
+        $params->getCsv()->willReturn(true);
+        $loggerHandler->csvOutput()->shouldBeCalled();
+
+        $this->generateCsv();
+    }
+
+    function it_should_not_generate_csv(Params $params, LoggerHandler $loggerHandler)
+    {
+        $params->getCsv()->willReturn(false);
+        $loggerHandler->csvOutput()->shouldNotBeCalled();
+
+        $this->generateCsv();
+    }
 }

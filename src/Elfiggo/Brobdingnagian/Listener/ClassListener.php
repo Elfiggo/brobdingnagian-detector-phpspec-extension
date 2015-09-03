@@ -52,7 +52,8 @@ class ClassListener implements EventSubscriberInterface
     {
         return array(
             'afterSpecification' => array('performBrobdingnagian', 15),
-            'afterSuite' => array('displayErrors', 15)
+            'afterSuite' => array('displayErrors', 15),
+            'afterSuite' => array('generateCsv', 15)
         );
     }
 
@@ -68,10 +69,13 @@ class ClassListener implements EventSubscriberInterface
 
     public function displayErrors()
     {
-        if ($this->logger->messages()) {
+        if ($this->params->getBrobList() && count($this->logger->messages())) {
             $this->logger->output();
         }
+    }
 
+    public function generateCsv()
+    {
         if ($this->params->getCsv()) {
             $this->logger->csvOutput();
         }
