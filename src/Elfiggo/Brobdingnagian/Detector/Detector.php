@@ -34,9 +34,9 @@ class Detector
 
     public function __construct(array $detections = [])
     {
-        array_merge($this->coreDetections(), $detections);
+        $validations = array_merge($this->coreDetections(), $detections);
 
-        foreach ($detections as $subject) {
+        foreach ($validations as $subject) {
             if ($subject instanceof Detection) {
                 $this->detections[] = $subject;
             } else {
@@ -63,7 +63,7 @@ class Detector
         $this->reporter = $reporter;
 
         foreach ($this->detections as $detection) {
-            $detection->check($sus, $param, $reporter);
+            $detection->check($this->sus, $this->param, $this->reporter);
         }
     }
 

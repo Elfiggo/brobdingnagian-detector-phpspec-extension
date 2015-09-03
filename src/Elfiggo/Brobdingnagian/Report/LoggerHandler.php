@@ -56,6 +56,9 @@ class LoggerHandler implements Handler
 
     public function output()
     {
+        $this->outputter->output();
+
+
         $this->io->writeln('');
         $this->io->writeln('--------------------------------------------------------------------------------');
         $this->io->writeln('------------------------- Brobdingnagian Table ---------------------------------');
