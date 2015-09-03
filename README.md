@@ -2,22 +2,11 @@
 # brobdingnagian-detector-phpspec-extension
 Detects if your class and methods are too big and suggest to extract responsibilities and collaborators
 
-## Alpha testing
+## Installation
 
-1. Create an experimental branch on your project
-2. Add the following to your composer.json file
-3. Follow final setup steps, use `--list-brob=true` to display brobs 
-4. Report issues or create bug fixes with PR's following PhpSpec's contribution guidelines
-
-        
-         "repositories": [{
-            "type": "vcs",
-            "url": "git@github.com:Elfiggo/brobdingnagian-detector-phpspec-extension.git"
-         }],
          "require-dev": {
             "elfiggo/brobdingnagian-detector":"dev-master"
           }
-   
 
 ## Enable the extension
 
