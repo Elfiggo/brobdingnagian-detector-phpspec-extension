@@ -16,7 +16,7 @@ class LoggerHandler implements Handler
      * @param $errorType
      * @return void
      */
-    public function act(ReflectionClass $sus, $class, $message, $errorType)
+    public function act(ReflectionClass $sus, $class, $message, $errorType = 'Unknown')
     {
         $this->log[$sus->getName()][] = ['message' => $message, 'class' => $class, 'errorType' => $errorType];
     }
