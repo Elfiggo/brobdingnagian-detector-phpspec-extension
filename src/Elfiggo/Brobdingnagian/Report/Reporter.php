@@ -37,7 +37,8 @@ class Reporter
             $io->writeln('--------------------------------------------------------------------------------');
             $io->writeln('|  ' . str_pad('Error Type',17) . '  |  ' . str_pad('Message', 52) . '  |');
             foreach($this->handler->messages() as $class => $messages) {
-                $io->writeln(str_pad('-- Class -- ', 22) . '|  ' . str_pad($class, 67 - strlen($class)));
+                $io->writeln('--------------------------------------------------------------------------------');
+                $io->writeln(str_pad('|  -- Class -- ', 22) . '|  ' . str_pad($class, 67 - strlen($class)));
                 foreach ($messages as $data) {
                     $io->writeln('|  ' . str_pad($data['errorType'],17) . '  |  ' . $data['message']);
                 }
