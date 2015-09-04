@@ -13,5 +13,5 @@ interface Handler
      * @param string $errorType
      * @return mixed
      */
-    public function act(ReflectionClass $sus, $class, $message, $errorType = 'Unknown');
+    public function act(ReflectionClass $sus, $class, $message, $errorType);
 } 
