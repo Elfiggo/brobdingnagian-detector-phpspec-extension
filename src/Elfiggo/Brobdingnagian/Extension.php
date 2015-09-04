@@ -26,7 +26,7 @@ class Extension implements ExtensionInterface
                 $c->get('elfiggo.brobdingnagian.detector'),
                 $c->get('elfiggo.brobdingnagian.params'),
                 $c->get('elfiggo.brobdingnagian.reporter'),
-                $c->get('elfiggo.brobdingnagian.logger')
+                $c->get('console.io')
             );
         });
 
@@ -47,7 +47,7 @@ class Extension implements ExtensionInterface
         });
 
         $container->setShared('elfiggo.brobdingnagian.logger', function (ServiceContainer $c) {
-            return new LoggerHandler($c->get('console.io'));
+            return new LoggerHandler();
         });
 
         $container->setShared('elfiggo.brobdingnagian.exception', function (ServiceContainer $c) {
