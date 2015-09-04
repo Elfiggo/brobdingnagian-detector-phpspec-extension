@@ -5,7 +5,7 @@ Detects if your class and methods are too big and suggest to extract responsibil
 ## Installation
 
          "require-dev": {
-            "elfiggo/brobdingnagian-detector":"dev-master"
+            "elfiggo/brobdingnagian-detector":"^0.1.0"
           }
 
 ## Enable the extension
@@ -66,7 +66,7 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>group class messages together to be more meaningful in large lists</del>
     * <del>exportable option of all in CSV format</del>
     * <del>add class size error type</del>
-    * refactoring period
+    * <del>refactoring period</del>
 6. Ship It! (East Croydon)
 7. Add Dictionary of suggestible class names for roles
 8. Ship it! (Blackpool)
