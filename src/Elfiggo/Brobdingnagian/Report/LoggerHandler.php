@@ -13,29 +13,12 @@ class LoggerHandler implements Handler
      * @param ReflectionClass $sus
      * @param $class
      * @param $message
+     * @param $errorType
+     * @return void
      */
-    public function act(ReflectionClass $sus, $class, $message)
+    public function act(ReflectionClass $sus, $class, $message, $errorType = 'Unknown')
     {
-        $this->log[$sus->getName()][] = ['message' => $message, 'class' => $class, 'errorType' => $this->errorType($class)];
-    }
-
-    private function errorType($class)
-    {
-        switch($class) {
-            case 'Elfiggo\Brobdingnagian\Detector\ClassSize':
-                return 'Class size';
-                break;
-            case 'Elfiggo\Brobdingnagian\Detector\DependenciesSize':
-                return 'Dependencies size';
-                break;
-            case 'Elfiggo\Brobdingnagian\Detector\MethodSize':
-                return 'Method size';
-                break;
-            case 'Elfiggo\Brobdingnagian\Detector\NumberOfMethods':
-                return 'Too many methods';
-                break;
-            default:return 'Unknown';break;
-        }
+        $this->log[$sus->getName()][] = ['message' => $message, 'class' => $class, 'errorType' => $errorType];
     }
 
     /**

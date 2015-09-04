@@ -22,16 +22,16 @@ class LoggerHandlerSpec extends ObjectBehavior
     function it_should_return_an_array_of_messages(ReflectionClass $sus)
     {
         $sus->getName()->willReturn('LargeClass');
-        $this->act($sus, 'Elfiggo\Brobdingnagian\Detector\ClassSize', 'Error 1 class size is too large (1)');
+        $this->act($sus, 'Elfiggo\Brobdingnagian\Detector\ClassSize', 'Error 1 class size is too large (1)', 'Class size');
 
         $sus->getName()->willReturn('SmallMethod');
-        $this->act($sus, 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'Method size');
+        $this->act($sus, 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'Method size', 'Method size');
 
         $sus->getName()->willReturn('DependenciesAreUs');
-        $this->act($sus, 'Elfiggo\Brobdingnagian\Detector\DependenciesSize', 'Dependencies Size');
+        $this->act($sus, 'Elfiggo\Brobdingnagian\Detector\DependenciesSize', 'Dependencies Size', 'Dependencies size');
 
         $sus->getName()->willReturn('LargeClass');
-        $this->act($sus, 'Elfiggo\Brobdingnagian\Detector\ClassSize', 'Error 4 class size is too large (4)');
+        $this->act($sus, 'Elfiggo\Brobdingnagian\Detector\ClassSize', 'Error 4 class size is too large (4)', 'Class size');
 
         $recordedMessages = [
             'LargeClass' => [

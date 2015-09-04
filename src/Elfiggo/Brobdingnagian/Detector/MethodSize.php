@@ -21,7 +21,7 @@ class MethodSize implements Detection
         {
             $lineSize = $method->getEndLine() - $method->getStartLine();
             if ($lineSize > $params->getMethodSize()) {
-                $reporter->act($sus, self::class, "{$method->getName()} size is $lineSize lines long");
+                $reporter->act($sus, self::class, "{$method->getName()} size is $lineSize lines long", 'Method size');
             }
         }
     }

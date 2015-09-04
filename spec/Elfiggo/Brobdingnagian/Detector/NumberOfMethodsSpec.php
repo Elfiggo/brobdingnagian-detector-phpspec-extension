@@ -31,7 +31,7 @@ class NumberOfMethodsSpec extends ObjectBehavior
         $params->getNumberOfMethods()->willReturn(1);
         $sus->getMethods()->willReturn(['method 1', 'method 2']);
         $sus->getName()->willReturn('Enormo Class');
-        $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\NumberOfMethods', 'Enormo Class has too many methods (2)')->willThrow(TooManyMethodsDetected::class);
+        $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\NumberOfMethods', 'Enormo Class has too many methods (2)', 'Too many methods')->willThrow(TooManyMethodsDetected::class);
         $this->shouldThrow(TooManyMethodsDetected::class)->duringCheck($sus, $params, $reporter);
     }
 }

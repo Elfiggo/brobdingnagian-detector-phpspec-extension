@@ -13,9 +13,15 @@ class ExceptionHandler implements Handler
     /**
      * @param ReflectionClass $sus
      * @param $class
+     * @param $message
      * @param $errorType
+     * @throws ClassSizeTooLarge
+     * @throws DependenciesSizeTooLarge
+     * @throws MethodSizeTooLarge
+     * @throws TooManyMethodsDetected
+     * @return void
      */
-    public function act(ReflectionClass $sus, $class, $message)
+    public function act(ReflectionClass $sus, $class, $message, $errorType = 'Unknown')
     {
         switch($class) {
             case 'Elfiggo\Brobdingnagian\Detector\ClassSize':

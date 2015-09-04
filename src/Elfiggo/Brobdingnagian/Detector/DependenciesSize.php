@@ -19,7 +19,7 @@ class DependenciesSize implements Detection
         foreach ($sus->getMethods() as $method) {
 
             if ($method->getNumberOfParameters() > $params->getDependenciesLimit()) {
-                $reporter->act($sus, self::class, "{$method->getName()} has too many dependencies ({$method->getNumberOfParameters()})");
+                $reporter->act($sus, self::class, "{$method->getName()} has too many dependencies ({$method->getNumberOfParameters()})", 'Dependencies size');
             }
 
         }

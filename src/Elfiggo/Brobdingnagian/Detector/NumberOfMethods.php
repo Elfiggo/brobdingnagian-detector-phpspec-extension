@@ -17,7 +17,7 @@ class NumberOfMethods implements Detection
     public function check(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
         if (count($sus->getMethods()) > $params->getNumberOfMethods()) {
-            $reporter->act($sus, self::class, "{$sus->getName()} has too many methods (" . count($sus->getMethods()) .')');
+            $reporter->act($sus, self::class, "{$sus->getName()} has too many methods (" . count($sus->getMethods()) .')', 'Too many methods');
         }
     }
 }

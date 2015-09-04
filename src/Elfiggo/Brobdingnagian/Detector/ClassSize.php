@@ -18,7 +18,7 @@ class ClassSize implements Detection
     public function check(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
         if ($sus->getEndLine() > $params->getClassSize()) {
-            $reporter->act($sus, self::class, "{$sus->getName()} class size is too large ({$sus->getEndLine()})");
+            $reporter->act($sus, self::class, "{$sus->getName()} class size is too large ({$sus->getEndLine()})", 'Class size');
         }
     }
 }
