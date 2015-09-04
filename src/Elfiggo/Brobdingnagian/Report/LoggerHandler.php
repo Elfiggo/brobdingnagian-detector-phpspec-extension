@@ -2,20 +2,12 @@
 
 namespace Elfiggo\Brobdingnagian\Report;
 
-use PhpSpec\Console\IO;
 use ReflectionClass;
 
 class LoggerHandler implements Handler
 {
 
     private $log = [];
-
-    private $io;
-
-    public function __construct(IO $io)
-    {
-        $this->io = $io;
-    }
 
     /**
      * @param ReflectionClass $sus
@@ -52,36 +44,5 @@ class LoggerHandler implements Handler
     public function messages()
     {
         return $this->log;
-    }
-
-    public function output()
-    {
-        $this->io->writeln('');
-        $this->io->writeln('--------------------------------------------------------------------------------');
-        $this->io->writeln('------------------------- Brobdingnagian Table ---------------------------------');
-        $this->io->writeln('--------------------------------------------------------------------------------');
-        $this->io->writeln('|  ' . str_pad('Error Type',17) . '  |  ' . str_pad('Message', 52) . '  |');
-        foreach($this->messages() as $class => $messages) {
-            $this->io->writeln(str_pad('-- Class -- ', 22) . '|  ' . str_pad($class, 67 - strlen($class)));
-            foreach ($messages as $data) {
-                $this->io->writeln('|  ' . str_pad($data['errorType'],17) . '  |  ' . $data['message']);
-            }
-        }
-        $this->io->writeln('--------------------------------------------------------------------------------');
-        $this->io->writeln('--------------------------------- End ------------------------------------------');
-        $this->io->writeln('--------------------------------------------------------------------------------');
-    }
-
-    public function csvOutput()
-    {
-        $fp = fopen('brobdingnagian-test-results.csv', 'w+');
-        fputcsv($fp, ['Error Type', 'Message']);
-        foreach($this->messages() as $class => $messages) {
-            fputcsv($fp, ['Class', $class]);
-            foreach ($messages as $data) {
-                fputcsv($fp, [$data['errorType'], $data['message']]);
-            }
-        }
-        fclose($fp);
     }
 }

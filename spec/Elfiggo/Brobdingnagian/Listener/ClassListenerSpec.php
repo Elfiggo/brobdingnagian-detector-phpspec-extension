@@ -4,8 +4,8 @@ namespace spec\Elfiggo\Brobdingnagian\Listener;
 
 use Elfiggo\Brobdingnagian\Detector\Detector;
 use Elfiggo\Brobdingnagian\Param\Params;
-use Elfiggo\Brobdingnagian\Report\LoggerHandler;
 use Elfiggo\Brobdingnagian\Report\Reporter;
+use PhpSpec\Console\IO;
 use PhpSpec\Event\SpecificationEvent;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -13,9 +13,9 @@ use Prophecy\Argument;
 
 class ClassListenerSpec extends ObjectBehavior
 {
-    function let(Detector $detector, Params $params, Reporter $reporter, LoggerHandler $loggerHandler)
+    function let(Detector $detector, Params $params, Reporter $reporter, IO $io)
     {
-        $this->beConstructedWith($detector, $params, $reporter, $loggerHandler);
+        $this->beConstructedWith($detector, $params, $reporter, $io);
     }
 
     function it_is_initializable()
@@ -34,38 +34,36 @@ class ClassListenerSpec extends ObjectBehavior
         $detector->analyse($specificationEvent, $params, $reporter)->shouldHaveBeenCalled();
     }
 
-    function it_should_output_a_message(Params $params, LoggerHandler $loggerHandler)
+    function it_should_output_a_message(Params $params, Reporter $reporter, IO $io)
     {
         $params->getBrobList()->willReturn(true);
-        $loggerHandler->messages()->willReturn([1,2,3]);
 
-        $loggerHandler->output()->shouldBeCalled();
+        $reporter->output($io)->shouldBeCalled();
 
         $this->displayErrors();
     }
 
-    function it_should_not_output_a_message(Params $params, LoggerHandler $loggerHandler)
+    function it_should_not_output_a_message(Params $params, Reporter $reporter, IO $io)
     {
         $params->getBrobList()->willReturn(false);
-        $loggerHandler->messages()->willReturn([1,2,3]);
 
-        $loggerHandler->output()->shouldNotBeCalled();
+        $reporter->output($io)->shouldNotBeCalled();
 
         $this->displayErrors();
     }
 
-    function it_should_generate_csv(Params $params, LoggerHandler $loggerHandler)
+    function it_should_generate_csv(Params $params, Reporter $reporter)
     {
         $params->getCsv()->willReturn(true);
-        $loggerHandler->csvOutput()->shouldBeCalled();
+        $reporter->csvOutput()->shouldBeCalled();
 
         $this->generateCsv();
     }
 
-    function it_should_not_generate_csv(Params $params, LoggerHandler $loggerHandler)
+    function it_should_not_generate_csv(Params $params, Reporter $reporter)
     {
         $params->getCsv()->willReturn(false);
-        $loggerHandler->csvOutput()->shouldNotBeCalled();
+        $reporter->csvOutput()->shouldNotBeCalled();
 
         $this->generateCsv();
     }

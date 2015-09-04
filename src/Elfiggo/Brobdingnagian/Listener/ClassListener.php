@@ -4,10 +4,9 @@ namespace Elfiggo\Brobdingnagian\Listener;
 
 use Elfiggo\Brobdingnagian\Detector\Detector;
 use Elfiggo\Brobdingnagian\Param\Params;
-use Elfiggo\Brobdingnagian\Report\LoggerHandler;
 use Elfiggo\Brobdingnagian\Report\Reporter;
+use PhpSpec\Console\IO;
 use PhpSpec\Event\SpecificationEvent;
-use PhpSpec\Event\SuiteEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class ClassListener implements EventSubscriberInterface
@@ -17,16 +16,17 @@ class ClassListener implements EventSubscriberInterface
      */
     private $detector;
     /**
-     * @var LoggerHandler
+     * @var IO
      */
-    private $logger;
+    private $io;
 
-    public function __construct(Detector $detector, Params $params, Reporter $reporter, LoggerHandler $logger)
+
+    public function __construct(Detector $detector, Params $params, Reporter $reporter, IO $io)
     {
         $this->detector = $detector;
         $this->params = $params;
         $this->reporter = $reporter;
-        $this->logger = $logger;
+        $this->io = $io;
     }
     /**
      * Returns an array of event names this subscriber wants to listen to.
@@ -68,15 +68,15 @@ class ClassListener implements EventSubscriberInterface
 
     public function displayErrors()
     {
-        if ($this->params->getBrobList() && count($this->logger->messages())) {
-            $this->logger->output();
+        if ($this->params->getBrobList()) {
+            $this->reporter->output($this->io);
         }
     }
 
     public function generateCsv()
     {
         if ($this->params->getCsv()) {
-            $this->logger->csvOutput();
+            $this->reporter->csvOutput();
         }
     }
 
