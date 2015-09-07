@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8cd614ad65a8b8b3f8ce5d7860cf36f6",
+    "hash": "7d0a2c83ac6ce70eb2f96136c30d83fb",
     "packages": [],
     "packages-dev": [
         {
@@ -782,7 +782,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "elfiggo/brobdingnagian-detector": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
