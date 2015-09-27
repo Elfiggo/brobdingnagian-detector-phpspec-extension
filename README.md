@@ -68,13 +68,13 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>exportable option of all in CSV format</del>
     * <del>add class size error type</del>
     * <del>refactoring period</del>
-5a. Add Backlog
+6. Add Backlog
     * add configurable filter for number of methods (public|private|protected)
     * add traits detector
     * <del>add interfaces detector</del>
-6. Ship It! (East Croydon)
-7. Add Dictionary of suggestible class names for roles
-8. Ship it! (Blackpool)
-9. Ask to split class/methods into a helper class
+7. Ship It! (East Croydon)
+8. Add Dictionary of suggestible class names for roles
+9. Ship it! (Blackpool)
+10. Ask to split class/methods into a helper class
     * Create New Helper class with Spec stubs of current class
-10. Ship it! (Derby)
+11. Ship it! (Derby)
