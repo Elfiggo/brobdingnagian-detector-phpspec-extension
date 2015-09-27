@@ -27,6 +27,7 @@ See [PhpSpec Extension Documentation](http://www.phpspec.net/en/latest/cookbook/
         list-brob: true|false
         create-csv: true|false
         number-of-interfaces: 3
+        number-of-traits: 1
 
         
 ## Usage
@@ -70,7 +71,7 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>refactoring period</del>
 6. Add Backlog
     * add configurable filter for number of methods (public|private|protected)
-    * add traits detector
+    * <del>add traits detector</del>
     * <del>add interfaces detector</del>
 7. Ship It! (East Croydon)
 8. Add Dictionary of suggestible class names for roles

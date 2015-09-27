@@ -11,3 +11,4 @@ formatter.name: pretty
 #    list-brob: true
 #    create-csv: false
 #    number-of-interfaces: 3
+#    number-of-traits: 1

@@ -7,6 +7,7 @@ use Elfiggo\Brobdingnagian\Exception\DependenciesSizeTooLarge;
 use Elfiggo\Brobdingnagian\Exception\MethodSizeTooLarge;
 use Elfiggo\Brobdingnagian\Exception\TooManyInterfacesDetected;
 use Elfiggo\Brobdingnagian\Exception\TooManyMethodsDetected;
+use Elfiggo\Brobdingnagian\Exception\TooManyTraitsDetected;
 use ReflectionClass;
 
 class ExceptionHandler implements Handler
@@ -40,6 +41,9 @@ class ExceptionHandler implements Handler
                 break;
             case 'Elfiggo\Brobdingnagian\Detector\NumberOfInterfaces':
                 throw new TooManyInterfacesDetected($message);
+                break;
+            case 'Elfiggo\Brobdingnagian\Detector\NumberOfTraits':
+                throw new TooManyTraitsDetected($message);
                 break;
             default:break;
         }

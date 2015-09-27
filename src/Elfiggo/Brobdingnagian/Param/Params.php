@@ -11,6 +11,7 @@ class Params
     const NUMBER_OF_METHODS = 5;
     const NUMBER_OF_INTERFACES = 3;
     const METHOD_SIZE = 15;
+    const NUMBER_OF_TRAITS = 1;
     const LIST_BROB = false;
     const CREATE_CSV = false;
 
@@ -76,5 +77,10 @@ class Params
     public function getNumberOfInterfaces()
     {
         return (int) $this->params['number-of-interfaces'] ?: self::NUMBER_OF_INTERFACES;
+    }
+
+    public function getNumberOfTraits()
+    {
+        return (int) $this->params['number-of-traits'] ?: self::NUMBER_OF_TRAITS;
     }
 }

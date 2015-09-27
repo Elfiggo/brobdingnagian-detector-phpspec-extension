@@ -116,4 +116,22 @@ class ParamsSpec extends ObjectBehavior
         $this->getNumberOfInterfaces()->shouldReturn(3);
     }
 
+    function it_should_return_the_configure_number_of_interfaces(ServiceContainer $serviceContainer)
+    {
+        $serviceContainer->getParam('brobdingnagian')->willReturn(array('number-of-interfaces' => 5));
+        $this->getNumberOfInterfaces()->shouldReturn(5);
+    }
+
+    function it_should_return_the_default_number_of_traits(ServiceContainer $serviceContainer)
+    {
+        $serviceContainer->getParam('brobdingnagian')->willReturn(null);
+        $this->getNumberOfTraits()->shouldReturn(1);
+    }
+
+    function it_should_return_the_configured_number_of_traits(ServiceContainer $serviceContainer)
+    {
+        $serviceContainer->getParam('brobdingnagian')->willReturn(array('number-of-traits' => 3));
+        $this->getNumberOfTraits()->shouldReturn(3);
+    }
+
 }

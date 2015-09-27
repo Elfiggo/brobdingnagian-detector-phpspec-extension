@@ -48,6 +48,7 @@ class DetectorSpec extends ObjectBehavior
         $params->getNumberOfMethods()->willReturn(5);
         $params->getMethodSize()->willReturn(10);
         $params->getNumberOfInterfaces()->willReturn(2);
+        $params->getNumberOfTraits()->willReturn(1);
         $this->analyse($specificationEvent, $params, $reporter);
     }
 
@@ -61,6 +62,7 @@ class DetectorSpec extends ObjectBehavior
         $params->getNumberOfMethods()->willReturn(5);
         $params->getMethodSize()->willReturn(10);
         $params->getNumberOfInterfaces()->willReturn(2);
+        $params->getNumberOfTraits()->willReturn(1);
         $this->analyse($specificationEvent, $params, $reporter);
     }
 
@@ -74,6 +76,7 @@ class DetectorSpec extends ObjectBehavior
         $params->getNumberOfMethods()->willReturn(5);
         $params->getMethodSize()->willReturn(10);
         $params->getNumberOfInterfaces()->willReturn(2);
+        $params->getNumberOfTraits()->willReturn(1);
         $this->analyse($specificationEvent, $params, $reporter);
     }
 
