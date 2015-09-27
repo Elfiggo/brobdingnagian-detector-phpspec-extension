@@ -47,7 +47,7 @@ class Detector
 
     private function coreDetections()
     {
-        return [new ClassSize(), new DependenciesSize(), new NumberOfMethods(), new MethodSize()];
+        return [new ClassSize(), new DependenciesSize(), new NumberOfMethods(), new MethodSize(), new NumberOfInterfaces()];
     }
 
     /**

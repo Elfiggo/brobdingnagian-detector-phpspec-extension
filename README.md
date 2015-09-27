@@ -26,6 +26,7 @@ See [PhpSpec Extension Documentation](http://www.phpspec.net/en/latest/cookbook/
         dependencies: 3
         list-brob: true|false
         create-csv: true|false
+        number-of-interfaces: 3
 
         
 ## Usage
@@ -67,15 +68,13 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>exportable option of all in CSV format</del>
     * <del>add class size error type</del>
     * <del>refactoring period</del>
+5a. Add Backlog
+    * add configurable filter for number of methods (public|private|protected)
+    * add traits detector
+    * <del>add interfaces detector</del>
 6. Ship It! (East Croydon)
 7. Add Dictionary of suggestible class names for roles
 8. Ship it! (Blackpool)
 9. Ask to split class/methods into a helper class
     * Create New Helper class with Spec stubs of current class
 10. Ship it! (Derby)
-
-## Backlog
-
-1. add configurable filter for number of methods (public|private|protected)
-2. add traits detector
-3. add interfaces detector

@@ -37,4 +37,9 @@ class ExceptionHandlerSpec extends ObjectBehavior
     {
         $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\TooManyMethodsDetected')->duringAct($sus, 'Elfiggo\Brobdingnagian\Detector\NumberOfMethods', 'Detected method size');
     }
+
+    function it_should_throw_a_number_of_interfaces_exception(ReflectionClass $sus)
+    {
+        $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\TooManyInterfacesDetected')->duringAct($sus, 'Elfiggo\Brobdingnagian\Detector\NumberOfInterfaces', 'Detected interfaces size');
+    }
 }

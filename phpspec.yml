@@ -1,12 +1,13 @@
 formatter.name: pretty
 
-extensions:
-    - Elfiggo\Brobdingnagian\Extension
-
-brobdingnagian:
-    class-size: 300
-    method-size: 10
-    number-of-methods: 5
-    dependencies: 3
-    list-brob: true
-    create-csv: false
+#extensions:
+#    - Elfiggo\Brobdingnagian\Extension
+#
+#brobdingnagian:
+#    class-size: 300
+#    method-size: 10
+#    number-of-methods: 5
+#    dependencies: 3
+#    list-brob: true
+#    create-csv: false
+#    number-of-interfaces: 3

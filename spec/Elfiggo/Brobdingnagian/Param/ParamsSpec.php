@@ -110,6 +110,10 @@ class ParamsSpec extends ObjectBehavior
         $this->getCsv()->shouldReturn(false);
     }
 
-
+    function it_should_return_the_default_number_of_interfaces(ServiceContainer $serviceContainer)
+    {
+        $serviceContainer->getParam('brobdingnagian')->willReturn(null);
+        $this->getNumberOfInterfaces()->shouldReturn(3);
+    }
 
 }

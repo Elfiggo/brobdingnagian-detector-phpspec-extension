@@ -9,6 +9,7 @@ class Params
     const CLASS_SIZE = 300;
     const DEPENDENCIES_SIZE = 3;
     const NUMBER_OF_METHODS = 5;
+    const NUMBER_OF_INTERFACES = 3;
     const METHOD_SIZE = 15;
     const LIST_BROB = false;
     const CREATE_CSV = false;
@@ -70,5 +71,10 @@ class Params
     public function getCsv()
     {
         return isset($this->params['create-csv']) ?: self::CREATE_CSV;
+    }
+
+    public function getNumberOfInterfaces()
+    {
+        return (int) $this->params['number-of-interfaces'] ?: self::NUMBER_OF_INTERFACES;
     }
 }
