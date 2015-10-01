@@ -2,13 +2,16 @@
 
 namespace Elfiggo\Brobdingnagian\Detector;
 
-
 use Elfiggo\Brobdingnagian\Param\Params;
 use Elfiggo\Brobdingnagian\Report\Reporter;
 use PhpSpec\Event\SpecificationEvent;
 use PhpSpec\Exception\Fracture\InterfaceNotImplementedException;
 use ReflectionClass;
 
+/**
+ * Class Detector
+ * @package Elfiggo\Brobdingnagian\Detector
+ */
 class Detector
 {
     /**
@@ -31,7 +34,10 @@ class Detector
      */
     private $detections = [];
 
-
+    /**
+     * @param array $detections
+     * @throws InterfaceNotImplementedException
+     */
     public function __construct(array $detections = [])
     {
         $validations = array_merge($this->coreDetections(), $detections);
@@ -40,11 +46,16 @@ class Detector
             if ($subject instanceof Detection) {
                 $this->detections[] = $subject;
             } else {
-                throw new InterfaceNotImplementedException("Does not implement the Detection interface", $subject, 'Detection');
+                throw new InterfaceNotImplementedException(
+                    "Does not implement the Detection interface", $subject, 'Detection'
+                );
             }
         }
     }
 
+    /**
+     * @return array
+     */
     private function coreDetections()
     {
         return [
@@ -59,8 +70,8 @@ class Detector
 
     /**
      * @param SpecificationEvent $sus
-     * @param Params $param
-     * @param Reporter $reporter
+     * @param Params             $param
+     * @param Reporter           $reporter
      */
     public function analyse(SpecificationEvent $sus, Params $param, Reporter $reporter)
     {
@@ -73,5 +84,4 @@ class Detector
             $detection->check($this->sus, $this->param, $this->reporter);
         }
     }
-
 }

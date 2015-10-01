@@ -9,6 +9,10 @@ use PhpSpec\Console\IO;
 use PhpSpec\Event\SpecificationEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/**
+ * Class ClassListener
+ * @package Elfiggo\Brobdingnagian\Listener
+ */
 class ClassListener implements EventSubscriberInterface
 {
     /**
@@ -20,7 +24,12 @@ class ClassListener implements EventSubscriberInterface
      */
     private $io;
 
-
+    /**
+     * @param Detector $detector
+     * @param Params   $params
+     * @param Reporter $reporter
+     * @param IO       $io
+     */
     public function __construct(Detector $detector, Params $params, Reporter $reporter, IO $io)
     {
         $this->detector = $detector;
@@ -59,7 +68,6 @@ class ClassListener implements EventSubscriberInterface
 
     /**
      * @param SpecificationEvent $specificationEvent
-     * @return \PhpSpec\Loader\Node\ExampleNode
      */
     public function performBrobdingnagian(SpecificationEvent $specificationEvent)
     {
@@ -79,5 +87,4 @@ class ClassListener implements EventSubscriberInterface
             $this->reporter->csvOutput();
         }
     }
-
 }

@@ -7,6 +7,10 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Class ListBrobCommand
+ * @package Elfiggo\Brobdingnagian\Console\Command
+ */
 class ListBrobCommand extends Command
 {
     protected function configure()
@@ -67,7 +71,7 @@ EOF
      * @param InputInterface  $input
      * @param OutputInterface $output
      *
-     * @return mixed
+     * @return bool
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -93,6 +97,9 @@ EOF
         );
     }
 
+    /**
+     * @return array
+     */
     private function phpspecList()
     {
         return array(
@@ -145,5 +152,4 @@ EOF
             )
         );
     }
-
 } 

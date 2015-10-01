@@ -13,7 +13,10 @@ use Elfiggo\Brobdingnagian\Report\Reporter;
 use PhpSpec\Extension\ExtensionInterface;
 use PhpSpec\ServiceContainer;
 
-
+/**
+ * Class Extension
+ * @package Elfiggo\Brobdingnagian
+ */
 class Extension implements ExtensionInterface
 {
     /**
@@ -57,6 +60,5 @@ class Extension implements ExtensionInterface
         $container->setShared('console.commands.run', function () {
             return new ListBrobCommand();
         });
-
     }
 }
