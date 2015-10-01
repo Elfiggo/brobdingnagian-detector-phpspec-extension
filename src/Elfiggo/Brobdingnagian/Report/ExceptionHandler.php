@@ -10,22 +10,27 @@ use Elfiggo\Brobdingnagian\Exception\TooManyMethodsDetected;
 use Elfiggo\Brobdingnagian\Exception\TooManyTraitsDetected;
 use ReflectionClass;
 
+/**
+ * Class ExceptionHandler
+ * @package Elfiggo\Brobdingnagian\Report
+ */
 class ExceptionHandler implements Handler
 {
     /**
      * @param ReflectionClass $sus
-     * @param $class
-     * @param $message
-     * @param $errorType
+     * @param string          $class
+     * @param string          $message
+     * @param string          $errorType
+     *
      * @throws ClassSizeTooLarge
      * @throws DependenciesSizeTooLarge
      * @throws MethodSizeTooLarge
+     * @throws TooManyInterfacesDetected
      * @throws TooManyMethodsDetected
-     * @return void
+     * @throws TooManyTraitsDetected
      */
     public function act(ReflectionClass $sus, $class, $message, $errorType = 'Unknown')
     {
-        var_dump($class);
         switch($class) {
             case 'Elfiggo\Brobdingnagian\Detector\ClassSize':
                 throw new ClassSizeTooLarge($message);
