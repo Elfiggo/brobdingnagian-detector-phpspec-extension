@@ -53,6 +53,9 @@ class Detector
         }
     }
 
+    /**
+     * @return array
+     */
     private function coreDetections()
     {
         return [
