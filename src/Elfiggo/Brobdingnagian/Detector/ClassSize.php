@@ -21,7 +21,10 @@ class ClassSize implements Detection
     {
         if ($sus->getEndLine() > $params->getClassSize()) {
             $reporter->act(
-                $sus, self::class, "{$sus->getName()} class size is too large ({$sus->getEndLine()})", 'Class size'
+                $sus,
+                self::class,
+                "{$sus->getName()} class size is too large ({$sus->getEndLine()})",
+                'Class size'
             );
         }
     }
