@@ -31,8 +31,6 @@ class Params
 
     /**
      * @param ServiceContainer $serviceContainer
-     *
-     * @TODO: should inject the ServiceContainer, inject required only
      */
     public function __construct(ServiceContainer $serviceContainer)
     {
