@@ -15,11 +15,6 @@ class LoggerHandlerSpec extends ObjectBehavior
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Report\HandlerInterface');
     }
 
-    function it_should_implement_the_handler_interface()
-    {
-        $this->shouldHaveType('Elfiggo\Brobdingnagian\Report\Handler');
-    }
-
     function it_should_return_an_array_of_messages(ReflectionClass $sus)
     {
         $sus->getName()->willReturn('LargeClass');

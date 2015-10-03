@@ -14,12 +14,6 @@ class ExceptionHandlerSpec extends ObjectBehavior
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Report\ExceptionHandler');
     }
 
-    function it_should_implement_the_handler_interface()
-    {
-        $this->shouldHaveType('Elfiggo\Brobdingnagian\Report\HandlerInterface');
-        $this->shouldHaveType('Elfiggo\Brobdingnagian\Report\Handler');
-    }
-
     function it_should_throw_a_class_size_exception(ReflectionClass $sus)
     {
         $this->shouldThrow('\Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge')->duringAct($sus, 'Elfiggo\Brobdingnagian\Detector\ClassSize', 'Class size');
