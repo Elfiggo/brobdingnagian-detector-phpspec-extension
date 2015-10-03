@@ -14,7 +14,7 @@ use ReflectionClass;
  * Class ExceptionHandler
  * @package Elfiggo\Brobdingnagian\Report
  */
-class ExceptionHandler implements Handler
+class ExceptionHandler implements HandlerInterface
 {
     /**
      * @param ReflectionClass $sus

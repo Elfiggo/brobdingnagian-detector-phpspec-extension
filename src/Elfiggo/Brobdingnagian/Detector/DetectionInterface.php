@@ -10,7 +10,7 @@ use ReflectionClass;
  * Interface Detection
  * @package Elfiggo\Brobdingnagian\Detector
  */
-interface Detection
+interface DetectionInterface
 {
     public function check(ReflectionClass $sus, Params $param, Reporter $reporter);
 } 

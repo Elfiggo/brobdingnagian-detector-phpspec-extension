@@ -10,7 +10,7 @@ use ReflectionClass;
  * Class ClassSize
  * @package Elfiggo\Brobdingnagian\Detector
  */
-class ClassSize implements Detection
+class ClassSize implements DetectionInterface
 {
     /**
      * @param ReflectionClass $sus

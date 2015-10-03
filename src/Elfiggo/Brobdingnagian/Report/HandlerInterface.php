@@ -8,7 +8,7 @@ use ReflectionClass;
  * Interface Handler
  * @package Elfiggo\Brobdingnagian\Report
  */
-interface Handler
+interface HandlerInterface
 {
     /**
      * @param  ReflectionClass $sus
