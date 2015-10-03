@@ -43,7 +43,7 @@ class Detector
         $validations = array_merge($this->coreDetections(), $detections);
 
         foreach ($validations as $subject) {
-            if ($subject instanceof Detection) {
+            if ($subject instanceof DetectionInterface) {
                 $this->detections[] = $subject;
             } else {
                 throw new InterfaceNotImplementedException(
