@@ -47,7 +47,7 @@ class Detector
                 $this->detections[] = $subject;
             } else {
                 throw new InterfaceNotImplementedException(
-                    "Does not implement the Detection interface", $subject, 'Detection'
+                    "Does not implement the Detection Interface", $subject, 'DetectionInterface'
                 );
             }
         }
