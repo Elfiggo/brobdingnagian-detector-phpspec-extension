@@ -17,7 +17,7 @@ class ClassSizeSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\ClassSize');
-        $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\Detection');
+        $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\DetectionInterface');
     }
 
     function it_does_not_complain_if_the_class_size_is_not_too_large(ReflectionClass $sus, Params $params, Reporter $reporter)

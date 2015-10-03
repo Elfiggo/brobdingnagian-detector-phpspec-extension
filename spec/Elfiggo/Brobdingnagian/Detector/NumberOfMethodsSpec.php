@@ -16,7 +16,7 @@ class NumberOfMethodsSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\NumberOfMethods');
-        $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\Detection');
+        $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\DetectionInterface');
     }
 
     function it_does_not_complain_if_the_number_of_methods_is_not_too_large(ReflectionClass $sus, Params $params, Reporter $reporter)

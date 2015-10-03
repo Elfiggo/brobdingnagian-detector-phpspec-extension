@@ -16,7 +16,7 @@ class NumberOfTraitsSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\NumberOfTraits');
-        $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\Detection');
+        $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\DetectionInterface');
     }
 
     function it_does_not_complain_if_the_number_of_traits_is_not_too_large(ReflectionClass $sus, Params $params, Reporter $reporter)
