@@ -119,4 +119,18 @@ class Params
     {
         return (int) $this->params['number-of-traits'] ?: self::NUMBER_OF_TRAITS;
     }
+
+    public function getFilterMethods()
+    {
+        $convertedNumber = 0;
+
+        foreach($this->params['filter-methods'] as $filter => $include) {
+            if ($include) {
+                $convertedNumber = $convertedNumber | constant('\ReflectionMethod::IS_' . strtoupper($filter));
+            }
+        }
+
+        return $convertedNumber;
+
+    }
 }
