@@ -20,7 +20,7 @@ class MethodSize implements Detection
      */
     public function check(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
-        foreach($sus->getMethods() as $method) {
+        foreach($sus->getMethods($params->getFilterMethods()) as $method) {
             $lineSize = $method->getEndLine() - $method->getStartLine();
             if ($lineSize > $params->getMethodSize()) {
                 $reporter->act(

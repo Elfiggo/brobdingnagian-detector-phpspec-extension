@@ -7,6 +7,13 @@ formatter.name: pretty
 #    class-size: 300
 #    method-size: 10
 #    number-of-methods: 5
+#    filter-methods:
+#       static: true
+#       public: true
+#       protected: true
+#       private: true
+#       abstract: true
+#       final: true
 #    dependencies: 3
 #    list-brob: true
 #    create-csv: false

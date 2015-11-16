@@ -43,6 +43,7 @@ class DetectorSpec extends ObjectBehavior
         $specificationEvent->getSpecification()->willReturn($specificationNode);
         $specificationNode->getTitle()->willReturn('Elfiggo\Brobdingnagian\Detector\ClassSize');
         $this->shouldNotThrow('Elfiggo\Brobdingnagian\Exception\ClassSizeTooLarge');
+        $params->getFilterMethods()->willReturn(0);
         $params->getClassSize()->willReturn(200);
         $params->getDependenciesLimit()->willReturn(2);
         $params->getNumberOfMethods()->willReturn(5);
@@ -57,6 +58,7 @@ class DetectorSpec extends ObjectBehavior
         $specificationEvent->getSpecification()->willReturn($specificationNode);
         $specificationNode->getTitle()->willReturn('Elfiggo\Brobdingnagian\Detector\ClassSize');
         $this->shouldNotThrow('Elfiggo\Brobdingnagian\Exception\DependenciesSizeTooLarge');
+        $params->getFilterMethods()->willReturn(0);
         $params->getClassSize()->willReturn(200);
         $params->getDependenciesLimit()->willReturn(2);
         $params->getNumberOfMethods()->willReturn(5);
@@ -71,6 +73,7 @@ class DetectorSpec extends ObjectBehavior
         $specificationEvent->getSpecification()->willReturn($specificationNode);
         $specificationNode->getTitle()->willReturn('Elfiggo\Brobdingnagian\Detector\ClassSize');
         $this->shouldNotThrow('Elfiggo\Brobdingnagian\Exception\TooManyMethodsDetected');
+        $params->getFilterMethods()->willReturn(0);
         $params->getClassSize()->willReturn(200);
         $params->getDependenciesLimit()->willReturn(2);
         $params->getNumberOfMethods()->willReturn(5);

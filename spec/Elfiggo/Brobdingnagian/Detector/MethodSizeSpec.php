@@ -18,6 +18,11 @@ class MethodSizeSpec extends ObjectBehavior
     const START_LINE = 5;
     const END_LINE = 45;
 
+    function let(Params $params)
+    {
+        $params->getFilterMethods()->willReturn(0);
+    }
+
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\MethodSize');
@@ -46,7 +51,7 @@ class MethodSizeSpec extends ObjectBehavior
         $method2->getEndLine()->willReturn(self::GREATER_THAN_20);
         $method2->getName()->willReturn('method_size_2');
 
-        $sus->getMethods()->willReturn([$method]);
+        $sus->getMethods(0)->willReturn([$method]);
         $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'method_size_1() size is 21 lines long', 'Method size')->willThrow(MethodSizeTooLarge::class);
         $params->getMethodSize()->willReturn(15);
         $this->shouldThrow(MethodSizeTooLarge::class)->duringCheck($sus, $params, $reporter);
@@ -58,7 +63,7 @@ class MethodSizeSpec extends ObjectBehavior
         $method->getEndLine()->willReturn(self::END_LINE);
         $method->getName()->willReturn('method_size_1');
 
-        $sus->getMethods()->willReturn([$method]);
+        $sus->getMethods(0)->willReturn([$method]);
         $reporter->act($sus, 'Elfiggo\Brobdingnagian\Detector\MethodSize', 'method_size_1() size is 40 lines long', 'Method size')->willThrow(MethodSizeTooLarge::class);
         $params->getMethodSize()->willReturn(15);
         $this->shouldThrow(MethodSizeTooLarge::class)->duringCheck($sus, $params, $reporter);

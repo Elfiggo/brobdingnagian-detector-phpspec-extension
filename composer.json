@@ -11,7 +11,7 @@
     ],
     "require": {},
     "require-dev": {
-        "phpspec/phpspec": "^2.2",
+        "phpspec/phpspec": "^2.3.0",
         "elfiggo/brobdingnagian-detector":"dev-master"
     },
     "autoload": {

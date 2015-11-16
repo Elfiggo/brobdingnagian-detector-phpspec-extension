@@ -20,7 +20,7 @@ class NumberOfMethods implements Detection
      */
     public function check(ReflectionClass $sus, Params $params, Reporter $reporter)
     {
-        if (count($sus->getMethods()) > $params->getNumberOfMethods()) {
+        if (count($sus->getMethods($params->getFilterMethods())) > $params->getNumberOfMethods()) {
             $reporter->act(
                 $sus,
                 self::class,

@@ -134,4 +134,36 @@ class ParamsSpec extends ObjectBehavior
         $this->getNumberOfTraits()->shouldReturn(3);
     }
 
+    function it_should_return_the_filter_methods_list(ServiceContainer $serviceContainer)
+    {
+        $paramFilterList = [
+            'static' => true,
+            'public' => true,
+            'protected' => true,
+            'private' => true,
+            'abstract' => true,
+            'final' => true,
+        ];
+
+        $serviceContainer->getParam('brobdingnagian')->willReturn(array('filter-methods' => $paramFilterList));
+
+        $this->getFilterMethods()->shouldReturn(1799);
+    }
+
+    function it_should_return_the_filter_methods_list_for_no_filters(ServiceContainer $serviceContainer)
+    {
+        $paramFilterList = [
+            'static' => false,
+            'public' => false,
+            'protected' => false,
+            'private' => false,
+            'abstract' => false,
+            'final' => false,
+        ];
+
+        $serviceContainer->getParam('brobdingnagian')->willReturn(array('filter-methods' => $paramFilterList));
+
+        $this->getFilterMethods()->shouldReturn(null);
+    }
+
 }
