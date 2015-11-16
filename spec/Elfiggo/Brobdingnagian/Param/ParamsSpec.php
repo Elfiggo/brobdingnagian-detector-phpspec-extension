@@ -163,7 +163,7 @@ class ParamsSpec extends ObjectBehavior
 
         $serviceContainer->getParam('brobdingnagian')->willReturn(array('filter-methods' => $paramFilterList));
 
-        $this->getFilterMethods()->shouldReturn(0);
+        $this->getFilterMethods()->shouldReturn(null);
     }
 
 }

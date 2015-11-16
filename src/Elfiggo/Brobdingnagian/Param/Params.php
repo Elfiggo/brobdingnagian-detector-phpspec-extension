@@ -122,7 +122,7 @@ class Params
 
     public function getFilterMethods()
     {
-        $convertedNumber = 0;
+        $convertedNumber = null;
 
         foreach($this->params['filter-methods'] as $filter => $include) {
             if ($include) {
