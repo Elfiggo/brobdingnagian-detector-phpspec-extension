@@ -21,11 +21,18 @@ See [PhpSpec Extension Documentation](http://www.phpspec.net/en/latest/cookbook/
 
     brobdingnagian:
         class-size: 300
-        method-size: 15
+        method-size: 10
         number-of-methods: 5
-        dependencies: 3
-        list-brob: true|false
-        create-csv: true|false
+        filter-methods:
+           static: true
+           public: true
+           protected: true
+           private: true
+           abstract: true
+           final: true
+        dependencies: 4
+        list-brob: true
+        create-csv: false
         number-of-interfaces: 3
         number-of-traits: 1
 
@@ -38,6 +45,17 @@ classes, methods or dependencies instead, then pass the following flag, this has
     phpspec r --list-brob=true (Turns Exceptions Off)
     phpspec r --list-brob=false (Turns Exceptions On)
     
+
+## Filter Methods
+
+Turn off checks for methods that are private or final by setting to `false`
+
+You can remove the `filter-methods` arguments entirely/
+
+Turning off `final` but not `public` on methods that are `final` and `public` will still appear as they conform to a `public` signiture.
+ 
+See [ReflectionClass::getMethods](http://php.net/manual/en/reflectionclass.getmethods.php) for more information.
+
 
 ## Supported PHP Versions
 
@@ -70,7 +88,7 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
     * <del>add class size error type</del>
     * <del>refactoring period</del>
 6. Add Backlog
-    * add configurable filter for number of methods (public|private|protected)
+    * <del>add configurable filter for number of methods (public|private|protected)</del>
     * <del>add traits detector</del>
     * <del>add interfaces detector</del>
 7. Ship It! (East Croydon)
