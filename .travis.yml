@@ -25,8 +25,6 @@ before_install:
 install:
   - export COMPOSER_ROOT_VERSION=dev-master
   - if [ "$DEPENDENCIES" == "dev" ]; then perl -pi -e 's/^}$/,"minimum-stability":"dev"}/' composer.json; fi;
-  - if [ "$DEPENDENCIES" != "low" ]; then composer update; fi;
-  - if [ "$DEPENDENCIES" == "low" ]; then composer update --prefer-lowest; fi;
 
 before_script:
   - echo "<?php if (PHP_VERSION_ID >= 50400) echo ',@php5.4';" > php_version_tags.php
