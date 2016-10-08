@@ -65,35 +65,9 @@ Follows [php security support](http://php.net/supported-versions.php) release cy
 
 ## To Do - Brobdingnagian
 
-1. <del>Configurable limits</del>
-    * <del>Configure Brob Exceptions to not throw if using list</del>
-2. <del>Number of Class dependencies</del>
-    * <del>Count number class construct dependencies</del>
-    * <del>add configurable limit</del>
-    * <del>add error type</del>
-3. <del>Count number of methods</del>
-    * <del>Add configurable limits</del>
-    * <del>add error type</del>
-4.  <del>Size of methods</del>
-    * <del>Check each method size</del>
-    * <del>Check number of method dependencies</del>
-    * <del>Add configurable limits</del>
-    * <del>add error type</del>
-5. <del>Add List output formatter</del>
-    * <del>table view (default)</del>
-    * <del>update log message/exception message where appropriate</del>
-    * <del>add back error type</del>
-    * <del>group class messages together to be more meaningful in large lists</del>
-    * <del>exportable option of all in CSV format</del>
-    * <del>add class size error type</del>
-    * <del>refactoring period</del>
-6. Add Backlog
-    * <del>add configurable filter for number of methods (public|private|protected)</del>
-    * <del>add traits detector</del>
-    * <del>add interfaces detector</del>
-7. Ship It! (East Croydon)
-8. Add Dictionary of suggestible class names for roles
-9. Ship it! (Blackpool)
-10. Ask to split class/methods into a helper class
+1. Ship It! (East Croydon)
+2. Add Dictionary of suggestible class names for roles
+3. Ship it! (Blackpool)
+4. Ask to split class/methods into a helper class
     * Create New Helper class with Spec stubs of current class
-11. Ship it! (Derby)
+5. Ship it! (Derby)
