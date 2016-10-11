@@ -10,7 +10,7 @@ use ReflectionClass;
  * Class NumberOfInterfaces
  * @package Elfiggo\Brobdingnagian\Detector
  */
-class NumberOfInterfaces implements Detection
+class NumberOfInterfaces implements DetectionInterface
 {
 
     /**

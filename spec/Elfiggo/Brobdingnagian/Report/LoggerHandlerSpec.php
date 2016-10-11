@@ -12,11 +12,7 @@ class LoggerHandlerSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Report\LoggerHandler');
-    }
-
-    function it_should_implement_the_handler_interface()
-    {
-        $this->shouldHaveType('Elfiggo\Brobdingnagian\Report\Handler');
+        $this->shouldHaveType('Elfiggo\Brobdingnagian\Report\HandlerInterface');
     }
 
     function it_should_return_an_array_of_messages(ReflectionClass $sus)

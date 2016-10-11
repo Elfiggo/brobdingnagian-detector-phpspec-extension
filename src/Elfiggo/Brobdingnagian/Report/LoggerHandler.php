@@ -4,7 +4,7 @@ namespace Elfiggo\Brobdingnagian\Report;
 
 use ReflectionClass;
 
-class LoggerHandler implements Handler
+class LoggerHandler implements HandlerInterface
 {
 
     private $log = [];

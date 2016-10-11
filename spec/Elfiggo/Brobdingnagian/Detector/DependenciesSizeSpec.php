@@ -23,7 +23,7 @@ class DependenciesSizeSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\DependenciesSize');
-        $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\Detection');
+        $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\DetectionInterface');
     }
 
     function it_does_not_complain_if_the_number_of_dependencies_are_low(ReflectionClass $sus, Params $params, Reporter $reporter, ReflectionMethod $reflectionMethod)

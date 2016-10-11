@@ -16,7 +16,7 @@ class NumberOfInterfacesSpec extends ObjectBehavior
     function it_is_initializable()
     {
         $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\NumberOfInterfaces');
-        $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\Detection');
+        $this->shouldHaveType('Elfiggo\Brobdingnagian\Detector\DetectionInterface');
     }
 
 
